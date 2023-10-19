@@ -17,7 +17,7 @@ public class Moviment_Personatge : MonoBehaviour
 
     Vector3 v3_posicio_inicial = Vector3.zero;
 
-    
+  
 
     private void Start()
     {
@@ -35,13 +35,13 @@ public class Moviment_Personatge : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.red;
 
-            v3_l_velocitat_horitzontal = Vector3.zero;
+            //v3_l_velocitat_horitzontal = Vector3.zero;
             v3_l_velocitat_vertical = Vector3.zero;
 
-            if (Input.GetKey(KeyCode.UpArrow))
-                v3_l_velocitat_horitzontal += Vector3.forward;
-            if (Input.GetKey(KeyCode.DownArrow))
-                v3_l_velocitat_horitzontal += Vector3.back;
+            //if (Input.GetKey(KeyCode.UpArrow))
+            //    v3_l_velocitat_horitzontal += Vector3.forward;
+            //if (Input.GetKey(KeyCode.DownArrow))
+            //    v3_l_velocitat_horitzontal += Vector3.back;
             if (Input.GetKey(KeyCode.LeftArrow))
                 v3_l_velocitat_horitzontal += Vector3.left;
             if (Input.GetKey(KeyCode.RightArrow))
@@ -56,11 +56,11 @@ public class Moviment_Personatge : MonoBehaviour
                 v3_l_velocitat_vertical += Vector3.up * f_bot;
             
             //Gir
-            float f_gir_vertical = Input.GetAxis("Mouse X")
-                * f_sensibilitat_gir * Time.deltaTime;
+            //float f_gir_vertical = Input.GetAxis("Mouse X")
+            //    * f_sensibilitat_gir * Time.deltaTime;
 
-            transform.Rotate(new Vector3(0, f_gir_vertical, 0),
-            Space.Self);
+            //transform.Rotate(new Vector3(0, f_gir_vertical, 0),
+            //Space.Self);
         }
         else if ((characterController.collisionFlags & CollisionFlags.Above) != 0)
         {
@@ -92,11 +92,5 @@ public class Moviment_Personatge : MonoBehaviour
                 v3_l_velocitat_horitzontal + v3_l_velocitat_vertical 
                 + new Vector3(0f,0f,0.001f))
                  * Time.deltaTime);        
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.name == "Premi") Debug.Log("premi");
-
     }
 }
