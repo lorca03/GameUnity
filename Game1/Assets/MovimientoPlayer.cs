@@ -12,6 +12,8 @@ public class MovimientoPlayer : MonoBehaviour
 
     Vector3 moveDirection = Vector3.zero;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +28,10 @@ public class MovimientoPlayer : MonoBehaviour
 
         if (chc.isGrounded)
         {
+            animator.SetBool("isJumping", false);
             if (Input.GetButton("Jump"))
             {
+                animator.SetBool("isJumping", true);
                 moveDirection.y = jump_speed;
             }
         }
@@ -38,8 +42,13 @@ public class MovimientoPlayer : MonoBehaviour
 
         if (horizontalInput != 0)
         {
+            animator.SetBool("isRunning", true);
             float xScale = Mathf.Abs(transform.localScale.x);
             transform.localScale = new Vector3(horizontalInput < 0 ? -xScale : xScale, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
