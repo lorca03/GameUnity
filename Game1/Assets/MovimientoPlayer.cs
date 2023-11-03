@@ -39,7 +39,7 @@ public class MovimientoPlayer : MonoBehaviour
         if (chc.isGrounded && moveDirection.y < 0)
         {
             animator.SetBool("isJumping", false);
-           // moveDirection.y = -2f; // Asegurar que el personaje esté en el suelo correctamente
+           // moveDirection.y = -2f;
         }
 
         if (horizontalInput != 0)
