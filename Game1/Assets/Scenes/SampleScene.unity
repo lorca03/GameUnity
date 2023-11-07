@@ -235,10 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46dc0774d47388b488c0c6312d037d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2120742238}
   speed: 10
   jump_speed: 13
   gravity: 1.5
-  animator: {fileID: 2120742238}
 --- !u!1 &391413954
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
-  DistanciaAtaque: 4
+  DistanciaAtaque: 3
   gravedad: 20
   inRange: 0
 --- !u!143 &670998128
@@ -837,7 +837,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1045602164
 MonoBehaviour:
