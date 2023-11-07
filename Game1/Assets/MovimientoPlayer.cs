@@ -39,7 +39,6 @@ public class MovimientoPlayer : MonoBehaviour
         if (chc.isGrounded && moveDirection.y < 0)
         {
             animator.SetBool("isJumping", false);
-           // moveDirection.y = -2f;
         }
 
         if (horizontalInput != 0)
