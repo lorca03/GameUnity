@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: cd98de9226c9462449ed75d5642dc05a
+guid: abc19bf1f2d31f243aa4180beaf81c11
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ely_vanguardsoldier_kerwinatienza_M2
-    second: {fileID: 2100000, guid: 5ca7570f0600e9e48bc1960c2e97cf17, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: ely-vanguardsoldier-kerwinatienza_diffuse
-    second: {fileID: 2800000, guid: 27001366fbe085f4c8902dd543686f1b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: ely-vanguardsoldier-kerwinatienza_glow
-    second: {fileID: 2800000, guid: be970884571f55f45b9a0a1f2787171b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: ely-vanguardsoldier-kerwinatienza_normal
-    second: {fileID: 2800000, guid: a762529b873b709449b2790cf7f9b7b5, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: ely-vanguardsoldier-kerwinatienza_specular
-    second: {fileID: 2800000, guid: f4f1bad65a756914291d462f45d36788, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 2.7
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -102,12 +77,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 399284359c00ef040b996ec81afe3e1b
-  - 7c8229d69a53b3d4c89ef64c1b61c2f7
-  - d5adfed1b4c8fb549a18192a304433e0
-  - 675f138392f01484ebb3827e8a15b695
-  - f6cb9d2df99c81f44b1902d1d46f7e35
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -120,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 2.7
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -129,7 +99,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

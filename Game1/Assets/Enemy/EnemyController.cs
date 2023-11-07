@@ -41,9 +41,11 @@ public class EnemyController : MonoBehaviour
 
                 moveDirection *= Speed;
                 animator.SetBool("isWalking", true);
+                animator.SetBool("isAttacking", false);
             }
             else
             {
+                animator.SetBool("isAttacking", true);
                 animator.SetBool("isWalking", false);
                 moveDirection = Vector3.zero;
             }
@@ -56,5 +58,21 @@ public class EnemyController : MonoBehaviour
         
         moveDirection.y -= gravedad * Time.deltaTime;
         Chc.Move(moveDirection * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            inRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            inRange = false;
+        }
     }
 }
