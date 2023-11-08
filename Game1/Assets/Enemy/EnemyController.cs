@@ -12,12 +12,15 @@ public class EnemyController : MonoBehaviour
     public float DistanciaAtaque = 4;
     public float gravedad = 20f;
     public bool inRange = false;
+    public int i_vidaMaxima = 100;
+    public int i_vida = 0;
 
     Vector3 moveDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
+        i_vida = i_vidaMaxima;
         Chc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         Player = FindObjectOfType<MovimientoPlayer>().gameObject;
@@ -52,6 +55,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            animator.SetBool("isAttacking", false);
             animator.SetBool("isWalking", false);
             moveDirection = Vector3.zero;
         }

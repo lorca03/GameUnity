@@ -10,15 +10,13 @@ public class MovimientoPlayer : MonoBehaviour
     public Animator animator;
     private PlayerInput inputPlayer;
 
-    public float speed;
+    public float f_speed;
     public float jump_speed;
     public float gravity;
     float horizontalInput;
 
     Vector3 moveDirection = Vector3.zero;
     Vector3 v3_posicio_inicial = Vector3.zero;
-
-    // Start is called before the first frame update
     void Start()
     {
         v3_posicio_inicial = transform.position;
@@ -27,12 +25,11 @@ public class MovimientoPlayer : MonoBehaviour
         inputPlayer.actions["Jump"].performed += Chc_Jump;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Input();
         horizontalInput = Input().x;
-        moveDirection.x = horizontalInput * speed;
+        moveDirection.x = horizontalInput * f_speed;
 
         if (horizontalInput != 0)
         {
