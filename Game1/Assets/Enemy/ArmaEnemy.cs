@@ -21,7 +21,7 @@ public class ArmaEnemy : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<StatsPlayer>().i_vida -= daño;
+            other.GetComponent<PlayerController>().i_vida -= daño;
         }
     }
 }

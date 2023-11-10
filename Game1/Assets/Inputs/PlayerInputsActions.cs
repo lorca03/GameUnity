@@ -44,6 +44,15 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Disparar"",
+                    ""type"": ""Button"",
+                    ""id"": ""d82623f9-c2c8-436f-9a85-a6ce92318811"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -189,6 +198,28 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa5fe457-f964-4d53-bcf6-8fe6128f0233"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Disparar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""035f65d5-db8d-4854-ae46-fbaf72528ee5"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Disparar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -199,6 +230,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         m_InputsPlayer = asset.FindActionMap("InputsPlayer", throwIfNotFound: true);
         m_InputsPlayer_Movment = m_InputsPlayer.FindAction("Movment", throwIfNotFound: true);
         m_InputsPlayer_Jump = m_InputsPlayer.FindAction("Jump", throwIfNotFound: true);
+        m_InputsPlayer_Disparar = m_InputsPlayer.FindAction("Disparar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,12 +294,14 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
     private List<IInputsPlayerActions> m_InputsPlayerActionsCallbackInterfaces = new List<IInputsPlayerActions>();
     private readonly InputAction m_InputsPlayer_Movment;
     private readonly InputAction m_InputsPlayer_Jump;
+    private readonly InputAction m_InputsPlayer_Disparar;
     public struct InputsPlayerActions
     {
         private @PlayerInputsActions m_Wrapper;
         public InputsPlayerActions(@PlayerInputsActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movment => m_Wrapper.m_InputsPlayer_Movment;
         public InputAction @Jump => m_Wrapper.m_InputsPlayer_Jump;
+        public InputAction @Disparar => m_Wrapper.m_InputsPlayer_Disparar;
         public InputActionMap Get() { return m_Wrapper.m_InputsPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +317,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Disparar.started += instance.OnDisparar;
+            @Disparar.performed += instance.OnDisparar;
+            @Disparar.canceled += instance.OnDisparar;
         }
 
         private void UnregisterCallbacks(IInputsPlayerActions instance)
@@ -293,6 +330,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Disparar.started -= instance.OnDisparar;
+            @Disparar.performed -= instance.OnDisparar;
+            @Disparar.canceled -= instance.OnDisparar;
         }
 
         public void RemoveCallbacks(IInputsPlayerActions instance)
@@ -314,5 +354,6 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
     {
         void OnMovment(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnDisparar(InputAction.CallbackContext context);
     }
 }
