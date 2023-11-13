@@ -19,8 +19,8 @@ public class Espada : MonoBehaviour
     {
         go = false; //Set To Not Return Yet
 
-        player = GameObject.Find("Akane");// The GameObject To Return To
-        sword = GameObject.Find("Sword");//The Weapon The Character Is Holding In The Scene
+        player = GameObject.Find("Chc_Personaje");
+        sword = GameObject.Find("Espada");//The Weapon The Character Is Holding In The Scene
 
         sword.GetComponent<MeshRenderer>().enabled = false; //Turn Off The Mesh Render To Make The Weapon Invisible
 

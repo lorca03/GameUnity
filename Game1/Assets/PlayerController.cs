@@ -12,13 +12,14 @@ public class PlayerController : MonoBehaviour
     private PlayerInput inputPlayer;
     public BoomerangController boomerangController;
     public GameObject BoomerangPrefab;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         i_vida = i_vidaMaxima;
         inputPlayer = GetComponent<PlayerInput>();
-        inputPlayer.actions["Disparar"].performed += Disparar;
+        inputPlayer.actions["Disparar"].performed += LanzarBoomerang;
     }
 
     // Update is called once per frame
@@ -27,11 +28,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Disparar(InputAction.CallbackContext obj)
+    private void LanzarBoomerang(InputAction.CallbackContext obj)
     {
-        GameObject clone;
-        clone = Instantiate(BoomerangPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation) as GameObject;
-        //boomerangController.Lanzar();
+        animator.SetBool("isAttacking", true);
+        StartCoroutine(boomerangController.Lanzar());
     }
 
 
