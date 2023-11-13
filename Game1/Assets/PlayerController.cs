@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput inputPlayer;
     public BoomerangController boomerangController;
+    public GameObject BoomerangPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,9 @@ public class PlayerController : MonoBehaviour
 
     private void Disparar(InputAction.CallbackContext obj)
     {
-        boomerangController.Lanzar();
+        GameObject clone;
+        clone = Instantiate(BoomerangPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation) as GameObject;
+        //boomerangController.Lanzar();
     }
 
 

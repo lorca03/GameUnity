@@ -29,7 +29,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(animator.GetBool("isWalking"));
         if (inRange)
         {
             Vector3 lookEnemy = new Vector3(Player.transform.position.x, transform.position.y, transform.position.z);
