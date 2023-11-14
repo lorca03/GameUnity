@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     private PlayerInput inputPlayer;
     public BoomerangController boomerangController;
     public GameObject BoomerangPrefab;
+    public GameObject go_manoJugador;
     public Animator animator;
+    public bool b_lanzar = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,16 +24,21 @@ public class PlayerController : MonoBehaviour
         inputPlayer.actions["Disparar"].performed += LanzarBoomerang;
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        if (b_lanzar)
+        {
+            GameObject clone;
+            Vector3 v3_posCreacion = new Vector3 (go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z);
+            clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
+            clone.GetComponent<BoomerangController>().b_clone = true;
+            b_lanzar = false;
+        }
     }
 
     private void LanzarBoomerang(InputAction.CallbackContext obj)
     {
         animator.SetBool("isAttacking", true);
-        StartCoroutine(boomerangController.Lanzar());
     }
 
 

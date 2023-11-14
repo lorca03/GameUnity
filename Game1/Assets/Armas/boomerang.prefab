@@ -47,12 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49adc6ae5c799724fbca3b78df98a0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alcance: {fileID: 0}
-  manoJugador: {fileID: 0}
-  boomerang: {fileID: 0}
-  f_force: 10
-  animator: {fileID: 0}
-  b_lanzar: 0
 --- !u!1 &3511602660876784039
 GameObject:
   m_ObjectHideFlags: 0

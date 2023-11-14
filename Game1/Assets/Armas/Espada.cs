@@ -5,14 +5,10 @@ using UnityEngine;
 public class Espada : MonoBehaviour
 {
     bool go;//Will Be Used To Change Direction Of Weapon
-
     GameObject player;//Reference To The Main Character
     GameObject sword;//Reference To The Main Character's Weapon
-
     Transform itemToRotate;//The Weapon That Is A Child Of The Empty Game Object
-
     Vector3 locationInFrontOfPlayer;//Location In Front Of Player To Travel To
-
 
     // Use this for initialization
     void Start()

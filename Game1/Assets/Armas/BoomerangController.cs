@@ -6,78 +6,70 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class BoomerangController : MonoBehaviour
 {
-    public Transform alcance;
-    public GameObject manoJugador;
-    public GameObject boomerang;
-    GameObject boomerangClone;
-    Vector3 direccion;
-    public float f_force;
-    bool armaEnAire;
-    public Animator animator;
-    public bool b_lanzar = false;
+    public bool b_clone = false;
+    bool b_go;
+    GameObject player;
+    GameObject boomerang;
+    Vector3 locationInFrontOfPlayer;
+    Animator animator;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        //Vector3 direccion = manoJugador.transform.root.localScale.x == 1 ? Vector3.right : Vector3.left;
 
+        b_go = false;
+
+        player = GameObject.Find("Chc_Personaje");
+        boomerang = GameObject.Find("boomerang");
+        animator = GameObject.Find("Ch44_nonPBR").GetComponent<Animator>();
+
+        if (b_clone)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject hijo = boomerang.transform.GetChild(i).gameObject;
+                hijo.GetComponent<MeshRenderer>().enabled = false;
+            }
+
+            locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) + player.transform.right * 10f;
+
+            StartCoroutine(Boom());
+        }
     }
 
-    // Update is called once per frame
+    IEnumerator Boom()
+    {
+        b_go = true;
+        yield return new WaitForSeconds(.1f);
+        b_go = false;
+    }
+
     void Update()
     {
-
-    }
-
-    public IEnumerator Lanzar()
-    {
-        while (!b_lanzar) {
-            yield return new WaitForSeconds(.05f);
-        }
-        direccion = manoJugador.transform.root.localScale.x == 1 ? Vector3.right : Vector3.left;
-        boomerang.SetActive(false);
-        boomerangClone = Instantiate(gameObject, transform.position, transform.rotation);
-        boomerangClone.SetActive(true);
-        boomerangClone.transform.Rotate(Time.deltaTime * 500, 0, 0);
-        Vector3 locationInFrontOfPlayer = new Vector3(manoJugador.transform.position.x + 4f, manoJugador.transform.position.y + 1, manoJugador.transform.position.z) + direccion * 3f;
-        Debug.Log(locationInFrontOfPlayer);
-        Debug.Log(Time.deltaTime);
-        boomerangClone.transform.position = Vector3.MoveTowards(transform.position, locationInFrontOfPlayer, Time.deltaTime * 5f);
-        Debug.Log(boomerangClone.transform.position);
-        //transform.parent = null;
-        //float distanciaRecorrida = 0f;
-        //float distanciaMaxima = 10f;
-
-        //while (distanciaRecorrida < distanciaMaxima)
-        //{
-        //    float movimiento = f_force * Time.deltaTime;
-        //    transform.Translate(direccion * movimiento, Space.World);
-        //    distanciaRecorrida += movimiento;
-
-        //    yield return null;
-        //}
-
-        yield return new WaitForSeconds(5f);
-        animator.SetBool("isAttacking", false);
-        //StartCoroutine(RegresarBoomerang());
-        b_lanzar = false;
-    }
-
-    IEnumerator RegresarBoomerang()
-    {
-        float distancia = Vector3.Distance(transform.position, manoJugador.transform.position);
-
-        float velocidadRetorno = 3f;
-
-        while (distancia > 0f)
+        if (b_clone)
         {
-            //Debug.Log(manoJugador.position);
-            transform.position = Vector3.Lerp(transform.position, manoJugador.transform.position, velocidadRetorno * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, manoJugador.transform.rotation, velocidadRetorno * Time.deltaTime);
-            distancia = Vector3.Distance(transform.position, manoJugador.transform.position);
-            yield return null;
-        }
 
+            if (b_go)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, locationInFrontOfPlayer, Time.deltaTime * 40);           
+            }
+
+            if (!b_go)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 30); //Return To Player
+            }
+
+            if (!b_go && Vector3.Distance(player.transform.position, transform.position) < 1.5)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    GameObject hijo = boomerang.transform.GetChild(i).gameObject;
+                    hijo.GetComponent<MeshRenderer>().enabled = true;
+                }
+                Destroy(this.gameObject);
+            }
+            animator.SetBool("isAttacking", false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
