@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68201c9ab3e6a084497eb66eb6263723
+guid: 42a73e3001ca92542841833e66d1ee3e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Frisbee Throw
+      name: Frisbee Throw2
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 54
+      lastFrame: 41
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4221035
+      - time: 0.30701753
         functionName: EventoLanzar
         data: 
         objectReferenceParameter: {instanceID: 0}

@@ -341,6 +341,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1752662905140590675}
     - target: {fileID: 5839158219030845973, guid: f0189a54839ccc6418a9e2d6f7f0a713, type: 3}
+      propertyPath: f_LocPlayer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839158219030845973, guid: f0189a54839ccc6418a9e2d6f7f0a713, type: 3}
       propertyPath: manoJugador
       value: 
       objectReference: {fileID: 374991431}

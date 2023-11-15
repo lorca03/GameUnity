@@ -15,13 +15,13 @@ public class BoomerangController : MonoBehaviour
 
     void Start()
     {
-        //Vector3 direccion = manoJugador.transform.root.localScale.x == 1 ? Vector3.right : Vector3.left;
-
         b_go = false;
 
         player = GameObject.Find("Chc_Personaje");
         boomerang = GameObject.Find("boomerang");
         animator = GameObject.Find("Ch44_nonPBR").GetComponent<Animator>();
+
+        Vector3 direccion = player.transform.root.localScale.x == 1 ? Vector3.right : Vector3.left;
 
         if (b_clone)
         {
@@ -31,7 +31,7 @@ public class BoomerangController : MonoBehaviour
                 hijo.GetComponent<MeshRenderer>().enabled = false;
             }
 
-            locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z) + player.transform.right * 10f;
+            locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z) + direccion * 15f;
 
             StartCoroutine(Boom());
         }
@@ -40,7 +40,7 @@ public class BoomerangController : MonoBehaviour
     IEnumerator Boom()
     {
         b_go = true;
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.4f);
         b_go = false;
     }
 
