@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     GameObject Player;
     Animator animator;
     CharacterController Chc;
+    GameObject go_player;
 
     public float f_Speed = 6;
     public float f_DistanciaAtaque = 4;
@@ -15,12 +16,15 @@ public class EnemyController : MonoBehaviour
     public int i_vidaMaxima = 100;
     public int i_vida = 0;
     bool b_isDead = false;
+    public Transform t_Punto1;
+    public Transform t_Punto2;
 
     Vector3 v3_moveDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
+        go_player = GameObject.Find("Chc_Personaje");
         i_vida = i_vidaMaxima;
         Chc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -31,38 +35,48 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         if (b_isDead) return;
-        if (b_inRange)
-        {
-            Vector3 lookEnemy = new Vector3(Player.transform.position.x, transform.position.y, transform.position.z);
-            transform.LookAt(lookEnemy);
-            float dist = Vector3.Distance(transform.position, lookEnemy);
-            if (f_DistanciaAtaque < dist)
-            {
-                if (transform.position.x > Player.transform.position.x)
-                    v3_moveDirection = Vector3.left;
-                else
-                    v3_moveDirection = Vector3.right;
+        transform.position = Vector3.MoveTowards(transform.position, t_Punto1.position, 2.5f * Time.deltaTime);
+        //if (b_inRange)
+        //{
+        //    Vector3 lookEnemy = new Vector3(Player.transform.position.x, transform.position.y, transform.position.z);
+        //    transform.LookAt(lookEnemy);
+        //    float dist = Vector3.Distance(transform.position, lookEnemy);
+        //    if (f_DistanciaAtaque < dist)
+        //    {
+        //        if (transform.position.x > Player.transform.position.x)
+        //            v3_moveDirection = Vector3.left;
+        //        else
+        //            v3_moveDirection = Vector3.right;
 
-                v3_moveDirection *= f_Speed;
-                animator.SetBool("isWalking", true);
-                animator.SetBool("isAttacking", false);
-            }
-            else
-            {
-                animator.SetBool("isAttacking", true);
-                animator.SetBool("isWalking", false);
-                v3_moveDirection = Vector3.zero;
-            }
-        }
-        else
-        {
-            animator.SetBool("isAttacking", false);
-            animator.SetBool("isWalking", false);
-            v3_moveDirection = Vector3.zero;
-        }
+        //        v3_moveDirection *= f_Speed;
+        //        animator.SetBool("isWalking", true);
+        //        animator.SetBool("isAttacking", false);
+        //    }
+        //    else
+        //    {
+        //        if (go_player.GetComponent<PlayerController>().b_Muerto)
+        //        {
+        //            Debug.Log("false");
+        //            animator.SetBool("isAttacking", false);
+        //        }
+        //        else
+        //        {
+        //            Debug.Log("true");
+        //            animator.SetBool("isAttacking", true);
+        //        }
+        //        animator.SetBool("isWalking", false);
+        //        v3_moveDirection = Vector3.zero;
+        //    }
+        //}
+        //else
+        //{
+        //    animator.SetBool("isAttacking", false);
+        //    animator.SetBool("isWalking", false);
+        //    v3_moveDirection = Vector3.zero;
+        //}
 
-        v3_moveDirection.y -= f_gravedad * Time.deltaTime;
-        Chc.Move(v3_moveDirection * Time.deltaTime);
+        //v3_moveDirection.y -= f_gravedad * Time.deltaTime;
+        //Chc.Move(v3_moveDirection * Time.deltaTime);
     }
 
     public void RestarVida(int i_daño)
