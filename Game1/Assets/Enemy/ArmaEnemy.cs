@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArmaEnemy : MonoBehaviour
 {
-    public int daño = 10;
+    public int i_daño = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class ArmaEnemy : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerController>().i_vida -= daño;
+            other.GetComponent<PlayerController>().i_vida -= i_daño;
         }
     }
 }

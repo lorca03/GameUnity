@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AvatarController : MonoBehaviour
 {
-    void EventoLanzar() {
+    void EventoLanzar()
+    {
         PlayerController pc_Script = transform.root.GetComponent<PlayerController>();
         pc_Script.b_lanzar = true;
     }

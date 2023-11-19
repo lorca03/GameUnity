@@ -7,10 +7,11 @@ using UnityEngine.SocialPlatforms.Impl;
 public class BoomerangController : MonoBehaviour
 {
     public bool b_clone = false;
+    public int i_daño;
     bool b_go;
     GameObject player;
     GameObject boomerang;
-    Vector3 locationInFrontOfPlayer;
+    Vector3 v3_locationInFrontOfPlayer;
     Animator animator;
 
     void Start()
@@ -31,7 +32,7 @@ public class BoomerangController : MonoBehaviour
                 hijo.GetComponent<MeshRenderer>().enabled = false;
             }
 
-            locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z) + direccion * 15f;
+            v3_locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z) + direccion * 15f;
 
             StartCoroutine(Boom());
         }
@@ -48,10 +49,9 @@ public class BoomerangController : MonoBehaviour
     {
         if (b_clone)
         {
-
             if (b_go)
             {
-                transform.position = Vector3.MoveTowards(transform.position, locationInFrontOfPlayer, Time.deltaTime * 40);           
+                transform.position = Vector3.MoveTowards(transform.position, v3_locationInFrontOfPlayer, Time.deltaTime * 40);
             }
 
             if (!b_go)
@@ -74,9 +74,10 @@ public class BoomerangController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        i_daño = 50;
         if (other.tag == "Enemy")
         {
-            Debug.Log("");
+            other.GetComponent<EnemyController>().RestarVida(i_daño);
         }
     }
 }
