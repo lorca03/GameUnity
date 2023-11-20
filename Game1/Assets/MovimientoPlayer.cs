@@ -9,6 +9,7 @@ public class MovimientoPlayer : MonoBehaviour
     CharacterController chc;
     public Animator animator;
     private PlayerInput inputPlayer;
+    PlayerController playerController;
 
     public float f_speed;
     public float f_jump_speed;
@@ -23,12 +24,14 @@ public class MovimientoPlayer : MonoBehaviour
         chc = GetComponent<CharacterController>();
         inputPlayer = GetComponent<PlayerInput>();
         inputPlayer.actions["Jump"].performed += Chc_Jump;
+        playerController = GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        if (chc.GetComponent<PlayerController>().b_Muerto) return;
-        Input();
+        if (playerController.b_Muerto) 
+            return;
+
         f_horizontalInput = Input().x;
         v3_moveDirection.x = f_horizontalInput * f_speed;
 

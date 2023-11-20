@@ -30,14 +30,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (b_Muerto) return;
-        if (b_lanzar)
-        {
-            GameObject clone;
-            Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z);
-            clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
-            clone.GetComponent<BoomerangController>().b_clone = true;
-            b_lanzar = false;
-        }
+
         Muerte();
     }
     void Muerte()
@@ -50,6 +43,15 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Death", true);
             StartCoroutine(Resetear_Juego());
         }
+    }
+
+    public void CloneBoobmerag()
+    {
+        GameObject clone;
+        Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z);
+        clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
+        clone.GetComponent<BoomerangController>().b_clone = true;
+        b_lanzar = false;
     }
 
     IEnumerator Resetear_Juego()

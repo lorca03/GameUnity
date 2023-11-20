@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
     bool b_isDead = false;
     public Transform t_Punto1;
     public Transform t_Punto2;
+    Transform t_PuntoIr;
+    Vector3 v3_lookEnemy;
 
     Vector3 v3_moveDirection = Vector3.zero;
 
@@ -29,55 +31,61 @@ public class EnemyController : MonoBehaviour
         Chc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         Player = FindObjectOfType<MovimientoPlayer>().gameObject;
+        t_PuntoIr = t_Punto1;
+    }
+
+    void AndarRuta()
+    {
+        animator.SetBool("isWalking", true);
+        if (transform.position.x == t_Punto1.position.x)
+            t_PuntoIr = t_Punto2;
+        else if (transform.position.x == t_Punto2.position.x)
+            t_PuntoIr = t_Punto1;
+        v3_lookEnemy = new Vector3(t_PuntoIr.position.x, transform.position.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, t_PuntoIr.position, 2f * Time.deltaTime);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (b_isDead) return;
-        transform.position = Vector3.MoveTowards(transform.position, t_Punto1.position, 2.5f * Time.deltaTime);
-        //if (b_inRange)
-        //{
-        //    Vector3 lookEnemy = new Vector3(Player.transform.position.x, transform.position.y, transform.position.z);
-        //    transform.LookAt(lookEnemy);
-        //    float dist = Vector3.Distance(transform.position, lookEnemy);
-        //    if (f_DistanciaAtaque < dist)
-        //    {
-        //        if (transform.position.x > Player.transform.position.x)
-        //            v3_moveDirection = Vector3.left;
-        //        else
-        //            v3_moveDirection = Vector3.right;
+        if (b_inRange)
+        {
+            v3_lookEnemy = new Vector3(Player.transform.position.x, transform.position.y, transform.position.z);
+            float dist = Vector3.Distance(transform.position, v3_lookEnemy);
+            if (f_DistanciaAtaque < dist)
+            {
+                if (transform.position.x > Player.transform.position.x)
+                    v3_moveDirection = Vector3.left;
+                else
+                    v3_moveDirection = Vector3.right;
 
-        //        v3_moveDirection *= f_Speed;
-        //        animator.SetBool("isWalking", true);
-        //        animator.SetBool("isAttacking", false);
-        //    }
-        //    else
-        //    {
-        //        if (go_player.GetComponent<PlayerController>().b_Muerto)
-        //        {
-        //            Debug.Log("false");
-        //            animator.SetBool("isAttacking", false);
-        //        }
-        //        else
-        //        {
-        //            Debug.Log("true");
-        //            animator.SetBool("isAttacking", true);
-        //        }
-        //        animator.SetBool("isWalking", false);
-        //        v3_moveDirection = Vector3.zero;
-        //    }
-        //}
-        //else
-        //{
-        //    animator.SetBool("isAttacking", false);
-        //    animator.SetBool("isWalking", false);
-        //    v3_moveDirection = Vector3.zero;
-        //}
-
-        //v3_moveDirection.y -= f_gravedad * Time.deltaTime;
-        //Chc.Move(v3_moveDirection * Time.deltaTime);
+                v3_moveDirection *= f_Speed;
+                animator.SetBool("isWalking", true);
+                animator.SetBool("isAttacking", false);
+            }
+            else
+            {
+                if (go_player.GetComponent<PlayerController>().b_Muerto)
+                {
+                    animator.SetBool("isAttacking", false);
+                }
+                else
+                {
+                    animator.SetBool("isAttacking", true);
+                }
+                animator.SetBool("isWalking", false);
+                v3_moveDirection = Vector3.zero;
+            }
+            Chc.Move(v3_moveDirection * 2f * Time.deltaTime);
+        }
+        else
+        {
+            AndarRuta();
+        }
+        transform.LookAt(v3_lookEnemy);
     }
+
 
     public void RestarVida(int i_daño)
     {

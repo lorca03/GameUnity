@@ -53,8 +53,7 @@ public class BoomerangController : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, v3_locationInFrontOfPlayer, Time.deltaTime * 40);
             }
-
-            if (!b_go)
+            else
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 30); //Return To Player
             }
