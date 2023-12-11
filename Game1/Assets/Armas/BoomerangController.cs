@@ -41,7 +41,7 @@ public class BoomerangController : MonoBehaviour
     IEnumerator Boom()
     {
         b_go = true;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.6f);
         b_go = false;
     }
 
@@ -51,11 +51,11 @@ public class BoomerangController : MonoBehaviour
         {
             if (b_go)
             {
-                transform.position = Vector3.MoveTowards(transform.position, v3_locationInFrontOfPlayer, Time.deltaTime * 40);
+                transform.position = Vector3.MoveTowards(transform.position, v3_locationInFrontOfPlayer, Time.deltaTime * 25);
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 30); //Return To Player
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 25); //Return To Player
             }
 
             if (!b_go && Vector3.Distance(player.transform.position, transform.position) < 1.5)
@@ -74,7 +74,7 @@ public class BoomerangController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         i_daño = 20;
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && b_clone)
         {
             other.GetComponent<EnemyController>().RestarVida(i_daño);
         }

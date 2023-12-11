@@ -94,7 +94,7 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetTrigger("Dead");
             b_isDead = true;
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 1);
         }
         i_vida -= i_daño;
     }
@@ -113,5 +113,11 @@ public class EnemyController : MonoBehaviour
         {
             b_inRange = false;
         }
+    }
+
+    private void Rayo()
+    {
+        //new Vector3(go_player.transform.position.x, transform.position.y, transform.position.z)))
+        Debug.Log(Physics.Raycast(new Ray(transform.position, transform.forward)));
     }
 }
