@@ -33,7 +33,6 @@ public class BoomerangController : MonoBehaviour
             }
 
             v3_locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z) + direccion * 15f;
-            Debug.Log(v3_locationInFrontOfPlayer);
             StartCoroutine(Boom());
         }
     }

@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     CharacterController Chc;
     GameObject go_player;
 
+    public ArmaEnemy ArmaEnemy;
     public float f_Speed = 6;
     public float f_DistanciaAtaque = 4;
     public float f_gravedad = 20f;
@@ -115,9 +116,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Rayo()
+    private void LanzarRayo()
     {
-        //new Vector3(go_player.transform.position.x, transform.position.y, transform.position.z)))
-        Debug.Log(Physics.Raycast(new Ray(transform.position, transform.forward)));
+        ArmaEnemy.LanzarRayo(v3_lookEnemy);
     }
 }
