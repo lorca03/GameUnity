@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -67,6 +68,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
+                //animator.SetTrigger("Atacar");
                 if (go_player.GetComponent<PlayerController>().b_Muerto)
                 {
                     animator.SetBool("isAttacking", false);
@@ -86,6 +88,12 @@ public class EnemyController : MonoBehaviour
         }
         transform.LookAt(v3_lookEnemy);
     }
+
+    //IEnumerator Delay()
+    //{
+    //    Debug.Log("ey");       
+    //    yield return new WaitForSeconds(5f);
+    //}
 
 
     public void RestarVida(int i_daño)
