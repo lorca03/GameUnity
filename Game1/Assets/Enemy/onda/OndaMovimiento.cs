@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RayoMovimiento : MonoBehaviour
+public class OndaMovimiento : MonoBehaviour
 {
     public int i_daño = 10;
     public float f_speed = 8f;
-    public float f_destroyAfterDistance = 20f;
+    public float f_destroyAfterDistance = 15f;
     float f_puntoSalida;
     public Vector3 destino;
 

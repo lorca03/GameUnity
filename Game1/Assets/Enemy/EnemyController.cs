@@ -64,18 +64,17 @@ public class EnemyController : MonoBehaviour
 
                 v3_moveDirection *= f_Speed;
                 animator.SetBool("isWalking", true);
-                animator.SetBool("isAttacking", false);
+                animator.ResetTrigger("Atacar");
             }
             else
             {
-                //animator.SetTrigger("Atacar");
                 if (go_player.GetComponent<PlayerController>().b_Muerto)
                 {
-                    animator.SetBool("isAttacking", false);
+                    animator.ResetTrigger("Atacar");
                 }
                 else
                 {
-                    animator.SetBool("isAttacking", true);
+                    animator.SetTrigger("Atacar");
                 }
                 animator.SetBool("isWalking", false);
                 v3_moveDirection = Vector3.zero;
@@ -124,8 +123,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void LanzarRayo()
+    private void LanzarOnda()
     {
-        ArmaEnemy.LanzarRayo(v3_lookEnemy);
+        ArmaEnemy.LanzarOnda(v3_lookEnemy);
     }
 }

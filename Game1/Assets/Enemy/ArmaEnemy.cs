@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 
 public class ArmaEnemy : MonoBehaviour
 {
-    Vector3 PosicionRayo;
-    public GameObject Rayo;
+    Vector3 PosicionOnda;
+    public GameObject Onda;
 
     // Start is called before the first frame update
     void Start()
@@ -20,16 +20,11 @@ public class ArmaEnemy : MonoBehaviour
         
     }
 
-    public void LanzarRayo(Vector3 v3_lookEnemy) 
+    public void LanzarOnda(Vector3 v3_lookEnemy) 
     {
-        PosicionRayo = new Vector3(transform.position.x + (v3_lookEnemy.x > transform.position.x ? 1 : -1), transform.position.y + (v3_lookEnemy.x > transform.position.x ? -2 : 0), -1.33f);
-        GameObject bullet = Instantiate(Rayo, PosicionRayo, v3_lookEnemy.x > transform.position.x ? Quaternion.Euler(0f, 0f,-180f) : Quaternion.identity);
-        bullet.GetComponent<RayoMovimiento>().destino = Vector3.left;
-        //if (transform.position.z >= f_destroyAfterDistance)
-        //{
-        //    Destroy(gameObject);
-        //}
+        PosicionOnda = new Vector3(transform.position.x + (v3_lookEnemy.x > transform.position.x ? 1 : -1), transform.position.y - 2.5f, -1.33f);
+        GameObject bullet = Instantiate(Onda, PosicionOnda, v3_lookEnemy.x > transform.position.x ? Quaternion.identity : Quaternion.Euler(0f, 180f, 0f));
+        bullet.GetComponent<OndaMovimiento>().destino = Vector3.right;
     }
-
     
 }
