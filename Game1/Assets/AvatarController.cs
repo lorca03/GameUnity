@@ -7,6 +7,5 @@ public class AvatarController : MonoBehaviour
     void EventoLanzar()
     {
         transform.root.GetComponent<PlayerController>().CloneBoobmerag();
-        
     }
 }

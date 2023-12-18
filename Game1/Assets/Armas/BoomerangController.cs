@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class BoomerangController : MonoBehaviour
 {
     public bool b_clone = false;
-    public int i_daño;
+    int i_daño;
     bool b_go;
     GameObject player;
     GameObject boomerang;
@@ -17,6 +17,7 @@ public class BoomerangController : MonoBehaviour
     void Start()
     {
         b_go = false;
+        i_daño = 25;
 
         player = GameObject.Find("Chc_Personaje");
         boomerang = GameObject.Find("boomerang");
@@ -72,7 +73,6 @@ public class BoomerangController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        i_daño = 20;
         if (other.tag == "Enemy" && b_clone)
         {
             other.GetComponent<EnemyController>().RestarVida(i_daño);

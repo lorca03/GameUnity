@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool b_lanzar = false;
     MovimientoPlayer movPlayer;
     public bool b_Muerto = false;
+    public Image barraVida;
 
     // Start is called before the first frame update
     void Start()
@@ -54,11 +56,18 @@ public class PlayerController : MonoBehaviour
         b_lanzar = false;
     }
 
+    public void Restar_Vida(int i_daño)
+    {
+        i_vida -= i_daño;
+        barraVida.fillAmount = (float)i_vida / i_vidaMaxima;
+    }
+
     IEnumerator Resetear_Juego()
     {
         yield return new WaitForSeconds(5f);
         animator.SetBool("Death", false);
         i_vida = i_vidaMaxima;
+        barraVida.fillAmount = 1;
         movPlayer.ResetPosition();
         b_Muerto = false;
     }

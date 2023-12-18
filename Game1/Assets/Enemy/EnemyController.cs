@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     bool b_isDead = false;
     public Transform t_Punto1;
     public Transform t_Punto2;
+    bool b_atacar = true;
     Transform t_PuntoIr;
     Vector3 v3_lookEnemy;
 
@@ -74,7 +75,13 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
-                    animator.SetTrigger("Atacar");
+                    if (b_atacar)
+                    {
+                        Debug.Log(b_atacar);
+                        animator.SetTrigger("Atacar");
+                        b_atacar = false;
+                        StartCoroutine(Delay());
+                    }
                 }
                 animator.SetBool("isWalking", false);
                 v3_moveDirection = Vector3.zero;
@@ -88,16 +95,14 @@ public class EnemyController : MonoBehaviour
         transform.LookAt(v3_lookEnemy);
     }
 
-    //IEnumerator Delay()
-    //{
-    //    Debug.Log("ey");       
-    //    yield return new WaitForSeconds(5f);
-    //}
-
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3f);
+        b_atacar = true;
+    }
 
     public void RestarVida(int i_daño)
     {
-        Debug.Log(i_daño);
         if (i_vida - i_daño <= 0)
         {
             animator.SetTrigger("Dead");

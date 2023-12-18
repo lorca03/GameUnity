@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af6d9fc4d4c1af419895d08eb9ed50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "i_da\xF1o": 10
+  "i_da\xF1o": 15
   f_speed: 8
   f_destroyAfterDistance: 20
   destino: {x: 0, y: 0, z: 0}

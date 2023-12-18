@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OndaMovimiento : MonoBehaviour
 {
-    public int i_daño = 10;
+    public int i_daño = 15;
     public float f_speed = 8f;
     public float f_destroyAfterDistance = 15f;
     float f_puntoSalida;
@@ -30,7 +30,8 @@ public class OndaMovimiento : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerController>().i_vida -= i_daño;
+            other.GetComponent<PlayerController>().Restar_Vida(i_daño);
+            Destroy(gameObject);
         }
     }
 }
