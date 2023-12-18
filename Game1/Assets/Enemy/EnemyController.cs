@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
     GameObject Player;
-    Animator animator;
     CharacterController Chc;
     GameObject go_player;
+    Animator animator;
 
     public ArmaEnemy ArmaEnemy;
     public float f_Speed = 6;
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour
     bool b_isDead = false;
     public Transform t_Punto1;
     public Transform t_Punto2;
+    public Image barraVidaEnemy;
     bool b_atacar = true;
     Transform t_PuntoIr;
     Vector3 v3_lookEnemy;
@@ -77,7 +79,6 @@ public class EnemyController : MonoBehaviour
                 {
                     if (b_atacar)
                     {
-                        Debug.Log(b_atacar);
                         animator.SetTrigger("Atacar");
                         b_atacar = false;
                         StartCoroutine(Delay());
@@ -107,9 +108,10 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetTrigger("Dead");
             b_isDead = true;
-            Destroy(gameObject, 1);
+            Destroy(gameObject.transform.root.gameObject, 1);
         }
         i_vida -= i_daño;
+        barraVidaEnemy.fillAmount = (float)i_vida / i_vidaMaxima;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -24,10 +24,8 @@ public class PasadizoController : MonoBehaviour
 
     void CambiarVisibilidad()
     {
-        Debug.Log(b_activo);
         b_activo = !b_activo;
         trampa.SetActive(b_activo);
-        Debug.Log(b_activo);
     }
 
     private void OnTriggerExit(Collider other)

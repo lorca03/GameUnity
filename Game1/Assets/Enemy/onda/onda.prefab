@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: 09b549c1eff9e564eb176f06c6f6a3dd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: dfab056db00bc71438ea1f7ea77adf4e, type: 2}
+      objectReference: {fileID: 2100000, guid: d3728af90ae4f764c956d1d4f35e5219, type: 2}
     - target: {fileID: 919132149155446097, guid: 09b549c1eff9e564eb176f06c6f6a3dd, type: 3}
       propertyPath: m_Name
       value: onda

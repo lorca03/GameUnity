@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Trampa
+  m_Name: EnemigoColor
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -79,6 +79,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.7019608, g: 0.18175383, b: 0.1254902, a: 1}
+    - _Color: {r: 0.9490197, g: 0.34117648, b: 0.27058825, a: 1}
     - _EmissionColor: {r: 1.9172809, g: 0.13371542, b: 0.080305, a: 1}
   m_BuildTextureStacks: []
