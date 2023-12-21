@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.13812733, g: 0.14415681, b: 0.16959172, a: 1}
+  m_IndirectSpecularColor: {r: 0.26121736, g: 0.27171075, b: 0.31646973, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1891,7 +1891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7308479437135497550, guid: 8d65ec704ca9e9d4996ad4c8d06590b8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.15
+      value: 41.516006
       objectReference: {fileID: 0}
     - target: {fileID: 7308479437135497550, guid: 8d65ec704ca9e9d4996ad4c8d06590b8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4270,8 +4270,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 101.30943, y: -19.723995}
-  m_SizeDelta: {x: 181, y: 25}
+  m_AnchoredPosition: {x: 106.6, y: -19.723999}
+  m_SizeDelta: {x: 182, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &753208774
 MonoBehaviour:
@@ -5268,7 +5268,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &866504494
 MonoBehaviour:
@@ -5749,7 +5749,7 @@ Transform:
   m_GameObject: {fileID: 878275910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.81, y: 2.55, z: 0}
+  m_LocalPosition: {x: -26.81, y: 2.55, z: 42.666008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6905,7 +6905,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.01745245, y: 0, z: 0, w: 0.99984777}
-  m_LocalPosition: {x: -10.9, y: 10, z: -24.61}
+  m_LocalPosition: {x: -9.85, y: 10, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6926,8 +6926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f_Velocidad: 20
   f_xAjustePosicion: 5
-  f_yAjustePosicion: 6
-  f_Zoom: -20
+  f_yAjustePosicion: 5
+  f_Zoom: 23
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12117,7 +12117,7 @@ Transform:
   m_GameObject: {fileID: 1582693274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 136.34, y: 14.7, z: 1.3339922}
+  m_LocalPosition: {x: 136.34, y: 14.7, z: 44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
