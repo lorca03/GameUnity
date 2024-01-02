@@ -17,7 +17,11 @@ public class Canvi_color_text_button : MonoBehaviour
     public void Color_Neon()
     {
         textMeshPro.color = new Color(0,253,255);
+    }
 
+    public void Color_White()
+    {
+        textMeshPro.color = Color.white;
     }
 
     public void Color_Origirnal()
