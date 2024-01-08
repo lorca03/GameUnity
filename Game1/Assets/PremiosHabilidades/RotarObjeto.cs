@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VidaEnemyController : MonoBehaviour
+public class RotarObjeto : MonoBehaviour
 {
-    public GameObject Enemy;
-
+    public float velocidadRotacion = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Enemy != null)
-            transform.position = new Vector3(Enemy.transform.position.x, transform.position.y, transform.position.z);
+        transform.Rotate(Vector3.up, velocidadRotacion * Time.deltaTime);
     }
-
-
 }
