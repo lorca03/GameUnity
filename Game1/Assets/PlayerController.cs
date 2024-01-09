@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour
 {
     public int i_vidaMaxima = 100;
     public int i_vida = 0;
+    int eliminacionesConsecutivas = 0;
+    public int puntuacion;
+    public TextMeshProUGUI textoPuntos;
 
     private PlayerInput inputPlayer;
     public BoomerangController boomerangController;
@@ -59,7 +63,20 @@ public class PlayerController : MonoBehaviour
     public void Restar_Vida(int i_daño)
     {
         i_vida -= i_daño;
+        if (eliminacionesConsecutivas >= 3)
+        {
+            puntuacion += (eliminacionesConsecutivas * 10) / 2;
+            textoPuntos.text = puntuacion.ToString();
+        }
+        eliminacionesConsecutivas = 0;
         barraVida.fillAmount = (float)i_vida / i_vidaMaxima;
+    }
+
+    public void Sumar_Puntos(int puntos)
+    {
+        puntuacion += puntos;
+        textoPuntos.text = puntuacion.ToString();
+        eliminacionesConsecutivas++;
     }
 
     IEnumerator Resetear_Juego()

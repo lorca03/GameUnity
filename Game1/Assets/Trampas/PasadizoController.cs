@@ -7,6 +7,7 @@ public class PasadizoController : MonoBehaviour
     bool b_activo = true;
     GameObject trampa;
     float intervalo = 1f;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class PasadizoController : MonoBehaviour
     void CambiarVisibilidad()
     {
         b_activo = !b_activo;
-        trampa.SetActive(b_activo);
+        animator.SetBool("VerTrampa", b_activo);
     }
 
     private void OnTriggerExit(Collider other)

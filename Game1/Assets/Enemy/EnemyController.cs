@@ -108,11 +108,14 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetTrigger("Dead");
             b_isDead = true;
-            Destroy(gameObject.transform.root.gameObject, 1);
+            Chc.enabled = false;
+            go_player.GetComponent<PlayerController>().Sumar_Puntos(10);
+            Destroy(gameObject.transform.root.gameObject, 0.5f);
         }
         i_vida -= i_daño;
         barraVidaEnemy.fillAmount = (float)i_vida / i_vidaMaxima;
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
