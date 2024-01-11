@@ -62,6 +62,15 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""IrBoomerang"",
+                    ""type"": ""Button"",
+                    ""id"": ""73387f2d-3049-40c1-b2b0-3bf3c09bffa4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,6 +260,28 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""action"": ""Pausa"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20ee651e-342c-4c4c-a2bf-cb169aa923b5"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IrBoomerang"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23295d12-9e56-4516-a4cf-e70b5a7d8c2f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IrBoomerang"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +294,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         m_InputsPlayer_Jump = m_InputsPlayer.FindAction("Jump", throwIfNotFound: true);
         m_InputsPlayer_Disparar = m_InputsPlayer.FindAction("Disparar", throwIfNotFound: true);
         m_InputsPlayer_Pausa = m_InputsPlayer.FindAction("Pausa", throwIfNotFound: true);
+        m_InputsPlayer_IrBoomerang = m_InputsPlayer.FindAction("IrBoomerang", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +360,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_InputsPlayer_Jump;
     private readonly InputAction m_InputsPlayer_Disparar;
     private readonly InputAction m_InputsPlayer_Pausa;
+    private readonly InputAction m_InputsPlayer_IrBoomerang;
     public struct InputsPlayerActions
     {
         private @PlayerInputsActions m_Wrapper;
@@ -336,6 +369,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_InputsPlayer_Jump;
         public InputAction @Disparar => m_Wrapper.m_InputsPlayer_Disparar;
         public InputAction @Pausa => m_Wrapper.m_InputsPlayer_Pausa;
+        public InputAction @IrBoomerang => m_Wrapper.m_InputsPlayer_IrBoomerang;
         public InputActionMap Get() { return m_Wrapper.m_InputsPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -357,6 +391,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Pausa.started += instance.OnPausa;
             @Pausa.performed += instance.OnPausa;
             @Pausa.canceled += instance.OnPausa;
+            @IrBoomerang.started += instance.OnIrBoomerang;
+            @IrBoomerang.performed += instance.OnIrBoomerang;
+            @IrBoomerang.canceled += instance.OnIrBoomerang;
         }
 
         private void UnregisterCallbacks(IInputsPlayerActions instance)
@@ -373,6 +410,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Pausa.started -= instance.OnPausa;
             @Pausa.performed -= instance.OnPausa;
             @Pausa.canceled -= instance.OnPausa;
+            @IrBoomerang.started -= instance.OnIrBoomerang;
+            @IrBoomerang.performed -= instance.OnIrBoomerang;
+            @IrBoomerang.canceled -= instance.OnIrBoomerang;
         }
 
         public void RemoveCallbacks(IInputsPlayerActions instance)
@@ -396,5 +436,6 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDisparar(InputAction.CallbackContext context);
         void OnPausa(InputAction.CallbackContext context);
+        void OnIrBoomerang(InputAction.CallbackContext context);
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class BoomerangController : MonoBehaviour
 {
     public bool b_clone = false;
+    public bool b_teleport = false;
     int i_daño;
     bool b_go;
     GameObject player;
@@ -41,7 +42,28 @@ public class BoomerangController : MonoBehaviour
     IEnumerator Boom()
     {
         b_go = true;
-        yield return new WaitForSeconds(.6f);
+        yield return new WaitForSeconds(.6f);Debug.Log(b_teleport);
+        if (b_teleport)
+            IrHaciaBoomerang();
+        else
+            b_go = false;
+    }
+
+    public void IrHaciaBoomerang()
+    {
+        StartCoroutine(MoverHaciaBoomerang());
+        
+    }
+
+    IEnumerator MoverHaciaBoomerang()
+    {
+        player.GetComponent<MovimientoPlayer>().f_gravity = 0;
+        while (Mathf.FloorToInt(player.transform.position.x) != Mathf.FloorToInt(transform.position.x))
+        {
+            player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 25);
+            yield return null;
+        }
+        player.GetComponent<MovimientoPlayer>().f_gravity = 15;
         b_go = false;
     }
 

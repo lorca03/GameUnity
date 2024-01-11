@@ -86,6 +86,7 @@ public class MovimientoPlayer : MonoBehaviour
     {
         transform.position = v3_posicio_inicial;
         f_horizontalInput = 0;
+        v3_moveDirection.y = 0;
         GameObject camara = GameObject.Find("Main Camera");
         camara.transform.Find("Muerto").gameObject.SetActive(false);
     }

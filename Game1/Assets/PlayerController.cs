@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     int eliminacionesConsecutivas = 0;
     public int puntuacion;
     public TextMeshProUGUI textoPuntos;
+    public bool b_teleport = false;
 
     private PlayerInput inputPlayer;
     public BoomerangController boomerangController;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         inputPlayer = GetComponent<PlayerInput>();
         movPlayer = GetComponent<MovimientoPlayer>();
         inputPlayer.actions["Disparar"].performed += LanzarBoomerang;
+        inputPlayer.actions["IrBoomerang"].performed += IrBoomerang;
     }
 
     void Update()
@@ -57,6 +59,8 @@ public class PlayerController : MonoBehaviour
         Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 1f);
         clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
         clone.GetComponent<BoomerangController>().b_clone = true;
+        if (b_teleport)
+            clone.GetComponent<BoomerangController>().b_teleport = true;
         b_lanzar = false;
     }
 
@@ -91,8 +95,15 @@ public class PlayerController : MonoBehaviour
 
     private void LanzarBoomerang(InputAction.CallbackContext obj)
     {
+        b_teleport = false;
         animator.SetBool("isAttacking", true);
     }
+    private void IrBoomerang(InputAction.CallbackContext obj)
+    {
+        b_teleport = true;
+        animator.SetBool("isAttacking", true);
+    }
+    
 
 
 }
