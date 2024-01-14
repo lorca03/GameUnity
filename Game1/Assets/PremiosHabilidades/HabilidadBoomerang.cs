@@ -24,7 +24,7 @@ public class PremioBoomerang : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PremiosController>().AñadirHabilidad("Boomerang");
+            other.GetComponent<PremiosController>().AñadirHabilidad("IrBoomerang");
             gameObject.SetActive(false);
         }
     }

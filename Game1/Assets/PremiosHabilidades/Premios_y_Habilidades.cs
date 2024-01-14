@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PremiosController : MonoBehaviour
 {
-    private List<string> habilidadesPersonaje = new List<string>();
+    public List<string> habilidadesPersonaje = new List<string>();
     private PlayerController playerController;
 
     // Start is called before the first frame update

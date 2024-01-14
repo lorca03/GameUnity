@@ -100,8 +100,11 @@ public class PlayerController : MonoBehaviour
     }
     private void IrBoomerang(InputAction.CallbackContext obj)
     {
-        b_teleport = true;
-        animator.SetBool("isAttacking", true);
+        if (GetComponentInParent<PremiosController>().habilidadesPersonaje.Contains("IrBoomerang"))
+        {
+            b_teleport = true;
+            animator.SetBool("isAttacking", true);
+        }
     }
     
 

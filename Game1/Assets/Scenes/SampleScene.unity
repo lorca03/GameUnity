@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4048777, g: 0.40968496, b: 0.47253, a: 1}
+  m_IndirectSpecularColor: {r: 0.28885424, g: 0.29943085, b: 0.3482763, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10518,6 +10518,7 @@ MonoBehaviour:
   i_vida: 0
   puntuacion: 0
   textoPuntos: {fileID: 1129802593}
+  b_teleport: 0
   boomerangController: {fileID: 1276187113}
   BoomerangPrefab: {fileID: 1752662905326990773, guid: f0189a54839ccc6418a9e2d6f7f0a713, type: 3}
   go_manoJugador: {fileID: 1277649531}
@@ -10604,6 +10605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd5747139f154448a95680e44bebd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  habilidadesPersonaje: []
 --- !u!1 &947788111
 GameObject:
   m_ObjectHideFlags: 0
@@ -13014,8 +13016,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3683014, y: 1.3415165, z: 7.711273}
-  m_Center: {x: -0.019050598, y: -0.006009102, z: 0.788517}
+  m_Size: {x: 1.3683014, y: 1.3415165, z: 8.679062}
+  m_Center: {x: -0.019050598, y: -0.006009102, z: 0.30462265}
 --- !u!114 &1274661666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13037,7 +13039,7 @@ Transform:
   m_GameObject: {fileID: 1274661664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 178.1, y: 23.69, z: 42.97}
+  m_LocalPosition: {x: 279.42, y: 21.61, z: 42.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
