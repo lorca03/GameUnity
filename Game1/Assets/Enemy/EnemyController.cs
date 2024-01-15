@@ -98,7 +98,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         b_atacar = true;
     }
 
@@ -109,7 +109,6 @@ public class EnemyController : MonoBehaviour
             animator.SetTrigger("Dead");
             b_isDead = true;
             Chc.enabled = false;
-            go_player.GetComponent<PlayerController>().Sumar_Puntos(10);
             Destroy(gameObject.transform.root.gameObject, 0.5f);
         }
         i_vida -= i_daño;

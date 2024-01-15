@@ -9,6 +9,7 @@ public class MovimientoPlayer : MonoBehaviour
     public Animator animator;
     private PlayerInput inputPlayer;
     PlayerController playerController;
+    public GameObject menumuerto;
 
     public float f_speed;
     public float f_jump_speed;
@@ -58,7 +59,7 @@ public class MovimientoPlayer : MonoBehaviour
         }
 
         if (transform.position.y < -30)
-            ResetPosition();
+            menumuerto.SetActive(true);
         else
         {
             chc.Move(v3_moveDirection * Time.deltaTime);
@@ -80,14 +81,5 @@ public class MovimientoPlayer : MonoBehaviour
             animator.SetBool("isJumping", true);
             v3_moveDirection.y = f_jump_speed;
         }
-    }
-
-    public void ResetPosition()
-    {
-        transform.position = v3_posicio_inicial;
-        f_horizontalInput = 0;
-        v3_moveDirection.y = 0;
-        GameObject camara = GameObject.Find("Main Camera");
-        camara.transform.Find("Muerto").gameObject.SetActive(false);
     }
 }

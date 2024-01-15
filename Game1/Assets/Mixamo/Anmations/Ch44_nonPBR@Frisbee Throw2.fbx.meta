@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.32433355
+      - time: 0.055084743
         functionName: EventoLanzar
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 2e538b4d963371243a7d7fa8a8bfea44, type: 3}

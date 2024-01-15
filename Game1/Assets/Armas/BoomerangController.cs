@@ -34,7 +34,7 @@ public class BoomerangController : MonoBehaviour
                 hijo.GetComponent<MeshRenderer>().enabled = false;
             }
 
-            v3_locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z) + direccion * 15f;
+            v3_locationInFrontOfPlayer = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z) + direccion * 18f;
             StartCoroutine(Boom());
         }
     }
@@ -42,7 +42,7 @@ public class BoomerangController : MonoBehaviour
     IEnumerator Boom()
     {
         b_go = true;
-        yield return new WaitForSeconds(.6f);Debug.Log(b_teleport);
+        yield return new WaitForSeconds(.6f);
         if (b_teleport)
             StartCoroutine(MoverHaciaBoomerang());
         else
@@ -57,7 +57,7 @@ public class BoomerangController : MonoBehaviour
             player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 30);
             yield return null;
         }
-        player.GetComponent<MovimientoPlayer>().f_gravity = 15;
+        player.GetComponent<MovimientoPlayer>().f_gravity = 35;
         b_go = false;
     }
 
@@ -67,11 +67,11 @@ public class BoomerangController : MonoBehaviour
         {
             if (b_go)
             {
-                transform.position = Vector3.MoveTowards(transform.position, v3_locationInFrontOfPlayer, Time.deltaTime * 25);
+                transform.position = Vector3.MoveTowards(transform.position, v3_locationInFrontOfPlayer, Time.deltaTime * 35);
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 25); //Return To Player
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z), Time.deltaTime * 35);
             }
 
             if (!b_go && Vector3.Distance(player.transform.position, transform.position) < 1.5)

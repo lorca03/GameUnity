@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
 {
     public int i_vidaMaxima = 100;
     public int i_vida = 0;
-    int eliminacionesConsecutivas = 0;
-    public int puntuacion;
     public TextMeshProUGUI textoPuntos;
     public bool b_teleport = false;
 
@@ -24,6 +22,7 @@ public class PlayerController : MonoBehaviour
     MovimientoPlayer movPlayer;
     public bool b_Muerto = false;
     public Image barraVida;
+    public GameObject menumuerto;
 
     // Start is called before the first frame update
     void Start()
@@ -45,12 +44,17 @@ public class PlayerController : MonoBehaviour
     {
         if (i_vida <= 0 && !b_Muerto)
         {
-            GameObject camara = GameObject.Find("Main Camera");
-            camara.transform.Find("Muerto").gameObject.SetActive(true);
             b_Muerto = true;
             animator.SetBool("Death", true);
-            StartCoroutine(Resetear_Juego());
+            StartCoroutine(Animacion_Muerte());
         }
+    }
+
+    IEnumerator Animacion_Muerte()
+    {
+        yield return new WaitForSeconds(5f);
+        animator.SetBool("Death", false);
+        menumuerto.SetActive(true);
     }
 
     public void CloneBoobmerag()
@@ -67,12 +71,6 @@ public class PlayerController : MonoBehaviour
     public void Restar_Vida(int i_daño)
     {
         i_vida -= i_daño;
-        if (eliminacionesConsecutivas >= 3)
-        {
-            puntuacion += (eliminacionesConsecutivas * 10) / 2;
-            textoPuntos.text = puntuacion.ToString();
-        }
-        eliminacionesConsecutivas = 0;
         Actualizar_Barra();
     }
 
@@ -81,21 +79,9 @@ public class PlayerController : MonoBehaviour
         barraVida.fillAmount = (float)i_vida / i_vidaMaxima;
     }
 
-    public void Sumar_Puntos(int puntos)
+    public void Resetear_Juego()
     {
-        puntuacion += puntos;
-        textoPuntos.text = puntuacion.ToString();
-        eliminacionesConsecutivas++;
-    }
-
-    IEnumerator Resetear_Juego()
-    {
-        yield return new WaitForSeconds(5f);
-        animator.SetBool("Death", false);
-        i_vida = i_vidaMaxima;
-        barraVida.fillAmount = 1;
-        movPlayer.ResetPosition();
-        b_Muerto = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void LanzarBoomerang(InputAction.CallbackContext obj)
