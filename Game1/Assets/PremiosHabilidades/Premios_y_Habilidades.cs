@@ -29,6 +29,7 @@ public class PremiosController : MonoBehaviour
     public void Curacion(int vida)
     {
         playerController.i_vida += vida;
+        playerController.Actualizar_Barra();
         if (playerController.i_vida > playerController.i_vidaMaxima)
             playerController.i_vida = playerController.i_vidaMaxima;
     }

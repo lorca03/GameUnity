@@ -73,6 +73,11 @@ public class PlayerController : MonoBehaviour
             textoPuntos.text = puntuacion.ToString();
         }
         eliminacionesConsecutivas = 0;
+        Actualizar_Barra();
+    }
+
+    public void Actualizar_Barra()
+    {
         barraVida.fillAmount = (float)i_vida / i_vidaMaxima;
     }
 

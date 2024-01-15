@@ -44,23 +44,17 @@ public class BoomerangController : MonoBehaviour
         b_go = true;
         yield return new WaitForSeconds(.6f);Debug.Log(b_teleport);
         if (b_teleport)
-            IrHaciaBoomerang();
+            StartCoroutine(MoverHaciaBoomerang());
         else
             b_go = false;
-    }
-
-    public void IrHaciaBoomerang()
-    {
-        StartCoroutine(MoverHaciaBoomerang());
-        
     }
 
     IEnumerator MoverHaciaBoomerang()
     {
         player.GetComponent<MovimientoPlayer>().f_gravity = 0;
-        while (Mathf.FloorToInt(player.transform.position.x) != Mathf.FloorToInt(transform.position.x))
+        while (Mathf.FloorToInt(player.transform.position.x) != Mathf.FloorToInt(transform.position.x) && Mathf.FloorToInt(player.transform.position.y) != Mathf.FloorToInt(transform.position.y))
         {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 25);
+            player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 30);
             yield return null;
         }
         player.GetComponent<MovimientoPlayer>().f_gravity = 15;
