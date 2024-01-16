@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TextMeshProUGUI inputScore;
+    [SerializeField] private TMP_InputField inputName;
 
-    // Update is called once per frame
-    void Update()
+    public UnityEvent<string, int> submitScoreEvent;
+
+    public void SubmitScore()
     {
-        
+        submitScoreEvent.Invoke(inputName.text,int.Parse(inputScore.text));
     }
 }

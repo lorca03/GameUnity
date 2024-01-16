@@ -10,8 +10,13 @@ public class PlayerController : MonoBehaviour
 {
     public int i_vidaMaxima = 100;
     public int i_vida = 0;
-    public TextMeshProUGUI textoPuntos;
     public bool b_teleport = false;
+
+    public TMP_Text timerText;
+    private float timerTime;
+    private int minutes,seconds,cents;
+    [SerializeField] GameObject menufinal;
+    [SerializeField] TMP_Text score;
 
     private PlayerInput inputPlayer;
     public BoomerangController boomerangController;
@@ -21,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool b_lanzar = false;
     MovimientoPlayer movPlayer;
     public bool b_Muerto = false;
+    public bool b_finish = false;
     public Image barraVida;
     public GameObject menumuerto;
 
@@ -32,14 +38,38 @@ public class PlayerController : MonoBehaviour
         movPlayer = GetComponent<MovimientoPlayer>();
         inputPlayer.actions["Disparar"].performed += LanzarBoomerang;
         inputPlayer.actions["IrBoomerang"].performed += IrBoomerang;
+        StartCoroutine(Contador());
     }
 
     void Update()
     {
         if (b_Muerto) return;
 
+        Contador();
+
         Muerte();
     }
+
+    private IEnumerator Contador()
+    {
+        while (!b_Muerto && !b_finish)
+        {
+            timerTime += Time.deltaTime;
+            minutes = (int)(timerTime / 60f);
+            seconds = (int)(timerTime - minutes * 60f);
+            cents = (int)((timerTime - (int)timerTime) * 100f);
+            timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, cents);
+            yield return null;
+        }
+    }
+
+    public void ActivarFinish() 
+    {
+        score.text = timerText.text;
+        menufinal.SetActive(true);
+        b_finish = true;
+    }
+
     void Muerte()
     {
         if (i_vida <= 0 && !b_Muerto)

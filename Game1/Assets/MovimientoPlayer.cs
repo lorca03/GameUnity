@@ -59,7 +59,10 @@ public class MovimientoPlayer : MonoBehaviour
         }
 
         if (transform.position.y < -30)
+        {
             menumuerto.SetActive(true);
+            playerController.b_Muerto = true;
+        }
         else
         {
             chc.Move(v3_moveDirection * Time.deltaTime);

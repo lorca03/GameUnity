@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class FinalController : MonoBehaviour
 {
-    [SerializeField] GameObject menufinal;
+    [SerializeField] PlayerController player;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            menufinal.SetActive(true);
+            player.ActivarFinish();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
