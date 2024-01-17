@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Windows;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -52,21 +54,23 @@ public class FirebaseManager : MonoBehaviour
             }
             else
             {
-                string jsonText = www.downloadHandler.text;Debug.Log(jsonText);
+                string jsonText = www.downloadHandler.text;
+
                 string cleanedJson = Regex.Replace(jsonText, "[{}\"]", "");
+                Debug.Log(cleanedJson);
 
-                // Divide la cadena en pares clave-valor utilizando la coma como delimitador
-                string[] keyValuePairs = cleanedJson.Split(',');
+                //// Divide la cadena en pares clave-valor utilizando la coma como delimitador
+                //string[] keyValuePairs = cleanedJson.Split(',');
 
-                // Imprime la información
-                foreach (var pair in keyValuePairs)
-                {
-                    string[] parts = pair.Split(':');
-                    string jugador = parts[0].Trim();
-                    string puntaje = parts[1].Trim();
+                //// Imprime la información
+                //foreach (var pair in keyValuePairs)
+                //{
+                //    string[] parts = pair.Split(':');
+                //    string jugador = parts[0].Trim();
+                //    string puntaje = parts[1].Trim();
 
-                    Debug.Log($"Jugador: {jugador}, Puntaje: {puntaje}");
-                }
+                //    Debug.Log($"Jugador: {jugador}, Puntaje: {puntaje}");
+                //}
             }
         }
     }

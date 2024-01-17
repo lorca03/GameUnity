@@ -109,10 +109,23 @@ public class EnemyController : MonoBehaviour
             animator.SetTrigger("Dead");
             b_isDead = true;
             Chc.enabled = false;
-            Destroy(gameObject.transform.root.gameObject, 0.5f);
+            Destroy(transform.parent.gameObject, 0.5f);
         }
         i_vida -= i_daño;
         barraVidaEnemy.fillAmount = (float)i_vida / i_vidaMaxima;
+    }
+
+    private void OnDestroy()
+    {
+        GameObject padre = transform.parent.gameObject.transform.parent.gameObject;
+        if (padre != null && padre.name == "Sala")
+        {
+            SalaController padreScript = padre.GetComponent<SalaController>();
+            if (padreScript != null)
+            {
+                padreScript.Liberar();
+            }
+        }
     }
 
 
