@@ -117,15 +117,22 @@ public class EnemyController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject padre = transform.parent.gameObject.transform.parent.gameObject;
-        if (padre != null && padre.name == "Sala")
+        try
         {
-            SalaController padreScript = padre.GetComponent<SalaController>();
-            if (padreScript != null)
+            GameObject padre = transform.parent.gameObject.transform.parent.gameObject;
+            if (padre != null && padre.name == "Sala")
             {
-                padreScript.Liberar();
+                SalaController padreScript = padre.GetComponent<SalaController>();
+                if (padreScript != null)
+                {
+                    padreScript.Liberar();
+                }
             }
         }
+        catch (System.Exception)
+        {
+        }
+        
     }
 
 
