@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlafatormaSuelta : MonoBehaviour
 {
-    private float esperarParaCaer = 1f;
+    private float esperarParaCaer = 0f;
     private float esperarParaDestruir = 2f;
     private float esperarParaReaparecer = 2f;
     private Vector3 antiguaPosicion;

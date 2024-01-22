@@ -284,6 +284,34 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""NoMovimiento"",
+            ""id"": ""8fb8fc74-e7a0-4ea1-b4c2-f1e2f8faaaae"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""b3454274-87ef-4556-8f8e-8b0f4b2b7341"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""07788ffa-f05e-48e9-9d5d-1d60a8ff3bf9"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -295,6 +323,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         m_InputsPlayer_Disparar = m_InputsPlayer.FindAction("Disparar", throwIfNotFound: true);
         m_InputsPlayer_Pausa = m_InputsPlayer.FindAction("Pausa", throwIfNotFound: true);
         m_InputsPlayer_IrBoomerang = m_InputsPlayer.FindAction("IrBoomerang", throwIfNotFound: true);
+        // NoMovimiento
+        m_NoMovimiento = asset.FindActionMap("NoMovimiento", throwIfNotFound: true);
+        m_NoMovimiento_Newaction = m_NoMovimiento.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -430,6 +461,52 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         }
     }
     public InputsPlayerActions @InputsPlayer => new InputsPlayerActions(this);
+
+    // NoMovimiento
+    private readonly InputActionMap m_NoMovimiento;
+    private List<INoMovimientoActions> m_NoMovimientoActionsCallbackInterfaces = new List<INoMovimientoActions>();
+    private readonly InputAction m_NoMovimiento_Newaction;
+    public struct NoMovimientoActions
+    {
+        private @PlayerInputsActions m_Wrapper;
+        public NoMovimientoActions(@PlayerInputsActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_NoMovimiento_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_NoMovimiento; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(NoMovimientoActions set) { return set.Get(); }
+        public void AddCallbacks(INoMovimientoActions instance)
+        {
+            if (instance == null || m_Wrapper.m_NoMovimientoActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_NoMovimientoActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        private void UnregisterCallbacks(INoMovimientoActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        public void RemoveCallbacks(INoMovimientoActions instance)
+        {
+            if (m_Wrapper.m_NoMovimientoActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(INoMovimientoActions instance)
+        {
+            foreach (var item in m_Wrapper.m_NoMovimientoActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_NoMovimientoActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public NoMovimientoActions @NoMovimiento => new NoMovimientoActions(this);
     public interface IInputsPlayerActions
     {
         void OnMovment(InputAction.CallbackContext context);
@@ -437,5 +514,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         void OnDisparar(InputAction.CallbackContext context);
         void OnPausa(InputAction.CallbackContext context);
         void OnIrBoomerang(InputAction.CallbackContext context);
+    }
+    public interface INoMovimientoActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public bool b_finish = false;
     public Image barraVida;
     public GameObject menumuerto;
+    public bool b_empezarJuego = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,19 +39,16 @@ public class PlayerController : MonoBehaviour
         movPlayer = GetComponent<MovimientoPlayer>();
         inputPlayer.actions["Disparar"].performed += LanzarBoomerang;
         inputPlayer.actions["IrBoomerang"].performed += IrBoomerang;
-        StartCoroutine(Contador());
     }
 
     void Update()
     {
-        if (b_Muerto) return;
-
-        Contador();
+        if (b_Muerto) return;  
 
         Muerte();
     }
 
-    private IEnumerator Contador()
+    public IEnumerator Contador()
     {
         while (!b_Muerto && !b_finish)
         {
@@ -111,6 +109,7 @@ public class PlayerController : MonoBehaviour
 
     public void Resetear_Juego()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

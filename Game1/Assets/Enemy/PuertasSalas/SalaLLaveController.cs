@@ -7,7 +7,9 @@ using UnityEngine;
 public class SalaLLaveController : MonoBehaviour
 {
     public GameObject llavePrefab;
+    public GameObject textoEntrada;
     private bool accionRealizada = false;
+    private bool textoUnavez = false;
     private Vector3 ultimaPosicionEnemy;
 
     private void Start()
@@ -16,6 +18,31 @@ public class SalaLLaveController : MonoBehaviour
         {
             StartCoroutine(HandleSalaLogicCoroutine());
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            if (!textoUnavez)
+            {
+                textoEntrada.SetActive(true);
+                textoUnavez = true;
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            StartCoroutine(QuitarTexto());
+        }
+    }
+
+    IEnumerator QuitarTexto()
+    {
+        yield return new WaitForSeconds(2f);
+        textoEntrada.SetActive(false);
     }
 
     private IEnumerator<WaitForSeconds> HandleSalaLogicCoroutine()

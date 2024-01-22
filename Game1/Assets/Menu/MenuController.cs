@@ -39,7 +39,14 @@ public class MenuController : MonoBehaviour
 
     public void ElegirEscena(string escena)
     {
+        Reanudar();
         SceneManager.LoadScene(escena);        
+    }
+
+    public void Jugar()
+    {
+        Reanudar();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Salir()

@@ -1,11 +1,10 @@
+using Palmmedia.ReportGenerator.Core.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.Windows;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -55,9 +54,28 @@ public class FirebaseManager : MonoBehaviour
             else
             {
                 string jsonText = www.downloadHandler.text;
-
                 string cleanedJson = Regex.Replace(jsonText, "[{}\"]", "");
-                Debug.Log(cleanedJson);
+
+                string[] partes = cleanedJson.Split(',');
+
+                // Asegurarse de que haya suficientes partes antes de intentar acceder a ellas
+                if (partes.Length >= 2)
+                {
+                    // Acceder a las partes individuales y asignarlas a variables
+                    string variable1 = partes[0].Trim(); // Trim para eliminar espacios en blanco
+                    string variable2 = partes[1].Trim();
+
+                    // Haz lo que necesites con las variables
+                    Debug.Log("Variable 1: " + variable1);
+                    Debug.Log("Variable 2: " + variable2);
+                }
+                else
+                {
+                    Debug.LogError("El string no tiene suficientes partes para dividir.");
+                }
+
+                //string cleanedJson = Regex.Replace(jsonText, "[{}\"]", "");
+                //Debug.Log(cleanedJson);
 
                 //// Divide la cadena en pares clave-valor utilizando la coma como delimitador
                 //string[] keyValuePairs = cleanedJson.Split(',');
@@ -76,8 +94,8 @@ public class FirebaseManager : MonoBehaviour
     }
 
 }
-public class RankingData
+public class DatosJugador
 {
-    public string jugador;
-    public string puntaje;
+    public string nombre;
+    public string tiempo;
 }
