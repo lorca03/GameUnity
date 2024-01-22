@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+
     GameObject Player;
     CharacterController Chc;
     GameObject go_player;
@@ -128,13 +129,13 @@ public class EnemyController : MonoBehaviour
                     padreScript.Liberar();
                 }
             }
-        }
-        catch (System.Exception)
-        {
-        }
-        
-    }
 
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(ex.Message);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

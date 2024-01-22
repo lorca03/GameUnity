@@ -5,7 +5,7 @@ using UnityEngine;
 public class OndaMovimiento : MonoBehaviour
 {
     public int i_daño = 15;
-    public float f_speed = 8f;
+    public float f_speed = 11f;
     public float f_destroyAfterDistance = 15f;
     float f_puntoSalida;
     public Vector3 destino;
