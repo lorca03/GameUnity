@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.39487487, g: 0.39932808, b: 0.4605543, a: 1}
+  m_IndirectSpecularColor: {r: 0.27207306, g: 0.28258717, b: 0.3290613, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18700,7 +18700,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 811588073}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1984911178}
+        m_TargetAssemblyTypeName: FirebaseManager, Assembly-CSharp
+        m_MethodName: AgregarPuntajeAlRanking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &811588073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22163,7 +22175,6 @@ GameObject:
   - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   - component: {fileID: 963194232}
-  - component: {fileID: 963194233}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -22351,18 +22362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadRotacion: 1
---- !u!114 &963194233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97837124c5ce84047b7c969848063401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &964182999
 GameObject:
   m_ObjectHideFlags: 0
@@ -25103,7 +25102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 01:25:41
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -25112,7 +25111,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293847843
   m_fontColor: {r: 0.13725491, g: 0.9215687, b: 0.9333334, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -39460,7 +39459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.754, y: -161}
+  m_AnchoredPosition: {x: 10.754028, y: -161}
   m_SizeDelta: {x: -399.3477, y: -361.7001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933781502
@@ -39849,6 +39848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984911177}
+  - component: {fileID: 1984911178}
   m_Layer: 5
   m_Name: GrupoMenuFinish
   m_TagString: Untagged
@@ -39883,6 +39883,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1972, y: -980}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1984911178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984911176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97837124c5ce84047b7c969848063401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombres:
+  - {fileID: 930660756}
+  - {fileID: 56262383}
+  - {fileID: 670699990}
+  - {fileID: 271020826}
+  - {fileID: 1310675247}
+  - {fileID: 1832462251}
+  - {fileID: 1396476628}
+  - {fileID: 642716989}
+  - {fileID: 532125279}
+  - {fileID: 1121950850}
+  puntuaciones:
+  - {fileID: 1125079491}
+  - {fileID: 474492835}
+  - {fileID: 26850478}
+  - {fileID: 1386478038}
+  - {fileID: 2104774022}
+  - {fileID: 87232507}
+  - {fileID: 504999444}
+  - {fileID: 103103407}
+  - {fileID: 1322700072}
+  - {fileID: 1500011309}
+  puntuacion: {fileID: 1204147289}
+  inputField: {fileID: 895286536}
 --- !u!1 &1987930376
 GameObject:
   m_ObjectHideFlags: 0
