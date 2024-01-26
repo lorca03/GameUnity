@@ -7,6 +7,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
+public class Ranking
+{
+    public Dictionary<string, string> data = new Dictionary<string, string>();
+}
+
 public class FirebaseManager : MonoBehaviour
 {
     private const string baseUrl = "https://neongame-guillermo-default-rtdb.europe-west1.firebasedatabase.app/ranking.json";
@@ -17,53 +22,26 @@ public class FirebaseManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ObtenerRanking());
+        StartCoroutine(MostrarRanking());
     }
-
-    public void Hola()
-    {
-        Debug.Log("ey");
-    }
-
-    //public void AgregarPuntajeAlRanking()
-    //{
-    //    string data = inputField.text + ":"+puntuacion;
-    //    StartCoroutine(EnviarPuntaje(baseUrl, data));
-    //}
-
-    //IEnumerator EnviarPuntaje(string url, string data)
-    //{
-    //    using (UnityWebRequest www = UnityWebRequest.Put(url, data))
-    //    {
-    //        www.method = UnityWebRequest.kHttpVerbPUT;
-    //        www.SetRequestHeader("Content-Type", "application/json");
-
-    //        yield return www.SendWebRequest();
-
-    //        if (www.result != UnityWebRequest.Result.Success)
-    //        {
-    //            Debug.LogError(www.error);
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Puntaje enviado correctamente");
-    //        }
-    //    }
-    //}
 
     public void AgregarPuntajeAlRanking()
     {
-        string data = $"{{\"{inputField.text}\":\"{puntuacion.text}\"}}";
+        string data = inputField.text+ ":"+ puntuacion.text;
         StartCoroutine(EnviarPuntaje(baseUrl, data));
     }
 
     IEnumerator EnviarPuntaje(string url, string data)
     {
+        string cleanedJson = "";
+        yield return ObtenerRanking(result => cleanedJson = result);
+        cleanedJson += ","+data;
+        cleanedJson = ConvertStringToJson(cleanedJson);
         using (UnityWebRequest www = new UnityWebRequest(url, "PUT"))
         {
             www.method = UnityWebRequest.kHttpVerbPUT;
             www.SetRequestHeader("Content-Type", "application/json");
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(data);
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(cleanedJson);
             www.uploadHandler = new UploadHandlerRaw(bodyRaw);
             www.downloadHandler = new DownloadHandlerBuffer();
 
@@ -77,12 +55,30 @@ public class FirebaseManager : MonoBehaviour
             {
                 Debug.Log(data);
                 Debug.Log("Puntaje enviado correctamente");
-                //StartCoroutine(ObtenerRanking());
+                StartCoroutine(MostrarRanking());
             }
         }
     }
+    public static string ConvertStringToJson(string stringData)
+    {
+        string[] entries = stringData.Split(',', StringSplitOptions.RemoveEmptyEntries);
+        Dictionary<string, string> dictionary = new Dictionary<string, string>();
+        foreach (string entry in entries)
+        {
+            string[] parts = entry.Split(':');
+            dictionary[parts[0]] = parts[1] + ":" + parts[2] + ":" + parts[3];
+        }
+        string json = "{";
+        foreach (KeyValuePair<string, string> entry in dictionary)
+        {
+            json += "\"" + entry.Key + "\":\"" + entry.Value + "\",";
+        }
+        json = json.Substring(0, json.Length - 1);
+        json += "}";
+        return json;
+    }
 
-    IEnumerator ObtenerRanking()
+    IEnumerator ObtenerRanking(Action<string> callback) 
     {
         using (UnityWebRequest www = UnityWebRequest.Get(baseUrl))
         {
@@ -91,32 +87,51 @@ public class FirebaseManager : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError(www.error);
+                callback("");
             }
             else
             {
                 string jsonText = www.downloadHandler.text;
-                string cleanedJson = Regex.Replace(jsonText, "[{}\"]", "");
+                string cleanedJson = limpiarJSON(jsonText);
+                callback(cleanedJson);
+            }
+        }
+        
+    }
 
-                string[] partes = cleanedJson.Split(',');
-                int cont = 0;
+    public String limpiarJSON(string jsontext) 
+    {
+        return Regex.Replace(jsontext, "[{}\"]", "");
+    }
 
-                var dataList = new List<(string nombre, string contador)>();
+    IEnumerator MostrarRanking()
+    {
+        string cleanedJson = "";
+        yield return ObtenerRanking(result => cleanedJson = result);
+        if (cleanedJson != "")
+        {
+            string[] partes = cleanedJson.Split(',');
+            int cont = 0;
 
-                foreach (var parte in partes)
-                {
-                    string[] part = parte.Split(':');
+            var dataList = new List<(string nombre, string contador)>();
 
-                    string nombre = part[0];
-                    string contador = string.Join(":", part.Skip(1));
+            foreach (var parte in partes)
+            {
+                string[] part = parte.Split(':');
 
-                    dataList.Add((nombre, contador));
-                    cont++;
-                }
+                string nombre = part[0];
+                string contador = string.Join(":", part.Skip(1));
 
-                var orderedDataList = dataList.OrderBy(x => TimeSpan.Parse("00:" + x.contador)).ToList();
-                cont = 0;
+                dataList.Add((nombre, contador));
+                cont++;
+            }
 
-                foreach (var item in orderedDataList)
+            var orderedDataList = dataList.OrderBy(x => TimeSpan.Parse("00:" + x.contador)).ToList();
+            cont = 0;
+
+            foreach (var item in orderedDataList)
+            {
+                if (cont < nombres.Length && cont < puntuaciones.Length)
                 {
                     nombres[cont].text = item.nombre;
                     puntuaciones[cont].text = item.contador;

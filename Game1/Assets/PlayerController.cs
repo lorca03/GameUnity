@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
             minutes = (int)(timerTime / 60f);
             seconds = (int)(timerTime - minutes * 60f);
             cents = (int)((timerTime - (int)timerTime) * 100f);
+            cents = cents % 60;
             timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, cents);
             yield return null;
         }
@@ -126,7 +127,5 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isAttacking", true);
         }
     }
-    
-
 
 }

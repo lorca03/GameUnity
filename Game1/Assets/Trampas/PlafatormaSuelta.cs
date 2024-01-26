@@ -44,10 +44,4 @@ public class PlafatormaSuelta : MonoBehaviour
         rb.velocity = Vector3.zero;
         animacion.SetBool("Reaparece", true);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

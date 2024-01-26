@@ -18,7 +18,7 @@ public class MovimientoPlayer : MonoBehaviour
     float f_horizontalInput;
     float profundidad;
 
-    Vector3 v3_moveDirection = Vector3.zero;
+    [HideInInspector] public Vector3 v3_moveDirection = Vector3.zero;
     Vector3 v3_posicio_inicial = Vector3.zero;
     void Start()
     {

@@ -52,6 +52,7 @@ public class BoomerangController : MonoBehaviour
     IEnumerator MoverHaciaBoomerang()
     {
         player.GetComponent<MovimientoPlayer>().f_gravity = 0;
+        player.GetComponent<MovimientoPlayer>().v3_moveDirection.y = 0;
         while (Mathf.FloorToInt(player.transform.position.x) != Mathf.FloorToInt(transform.position.x) && Mathf.FloorToInt(player.transform.position.y) != Mathf.FloorToInt(transform.position.y))
         {
             player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 30);
