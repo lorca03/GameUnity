@@ -109,5 +109,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "i_da\xF1o": 15
   f_speed: 15
-  f_destroyAfterDistance: 15
+  f_destroyAfterDistance: 10
   destino: {x: 0, y: 0, z: 0}

@@ -9,6 +9,7 @@ TagManager:
   - ArmaEnemy
   - ObjetosEscenas
   - Botones
+  - Force
   layers:
   - Default
   - TransparentFX

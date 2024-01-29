@@ -7,10 +7,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Ranking
-{
-    public Dictionary<string, string> data = new Dictionary<string, string>();
-}
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -19,9 +15,12 @@ public class FirebaseManager : MonoBehaviour
     public TextMeshProUGUI[] puntuaciones;
     public TextMeshProUGUI puntuacion;
     public TMP_InputField inputField;
+    public GameObject enviar;
 
     void Start()
     {
+        enviar.SetActive(true);
+        inputField.Select();
         StartCoroutine(MostrarRanking());
     }
 

@@ -90,9 +90,15 @@ public class BoomerangController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       
         if (other.tag == "Enemy" && b_clone)
         {
             other.GetComponent<EnemyController>().RestarVida(i_daño);
+        }else if (other.tag == "Force" && b_clone)
+        {
+            b_teleport = false;
+            b_go = false;
         }
+
     }
 }

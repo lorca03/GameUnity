@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
         if (i_vida <= 0 && !b_Muerto)
         {
             b_Muerto = true;
+            inputPlayer.SwitchCurrentActionMap("NoMovimiento");
             animator.SetBool("Death", true);
             StartCoroutine(Animacion_Muerte());
         }

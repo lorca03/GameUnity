@@ -21,7 +21,6 @@ public class ObjetosGlobales : MonoBehaviour
 
     public void MostrarOpciones(bool muestra)
     {
-        Debug.Log("EY");
         objetoOpciones.SetActive(muestra);
     }
 }
