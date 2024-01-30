@@ -110,6 +110,7 @@ public class EnemyController : MonoBehaviour
             animator.SetTrigger("Dead");
             b_isDead = true;
             Chc.enabled = false;
+            go_player.GetComponent<PlayerController>().enemigoBonificacionTiempo = true;
             Destroy(transform.parent.gameObject, 0.5f);
         }
         i_vida -= i_daño;

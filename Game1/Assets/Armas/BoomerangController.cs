@@ -14,12 +14,13 @@ public class BoomerangController : MonoBehaviour
     GameObject boomerang;
     Vector3 v3_locationInFrontOfPlayer;
     Animator animator;
+    GameObject camera;
 
     void Start()
     {
+        camera = FindObjectOfType<CameraController>().gameObject;
         b_go = false;
         i_daño = 25;
-
         player = GameObject.Find("Chc_Personaje");
         boomerang = GameObject.Find("boomerang");
         animator = GameObject.Find("Ch44_nonPBR").GetComponent<Animator>();
@@ -41,6 +42,7 @@ public class BoomerangController : MonoBehaviour
 
     IEnumerator Boom()
     {
+        camera.GetComponent<CameraController>().b_boomerangSonido = true;
         b_go = true;
         yield return new WaitForSeconds(.6f);
         if (b_teleport)

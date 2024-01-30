@@ -17,6 +17,7 @@ public class PlafatormaSuelta : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         antiguaPosicion = transform.position;
         animacion = GetComponent<Animator>();
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,6 +30,7 @@ public class PlafatormaSuelta : MonoBehaviour
 
     private IEnumerator Caida()
     {
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         yield return new WaitForSeconds(esperarParaCaer);
         rb.useGravity = enabled;
         yield return new WaitForSeconds(esperarParaDestruir);
@@ -43,5 +45,6 @@ public class PlafatormaSuelta : MonoBehaviour
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
         animacion.SetBool("Reaparece", true);
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

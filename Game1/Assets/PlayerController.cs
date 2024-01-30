@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public Image barraVida;
     public GameObject menumuerto;
     public bool b_empezarJuego = false;
+    public bool enemigoBonificacionTiempo = false;
+    public GameObject quitarSegundos;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,12 @@ public class PlayerController : MonoBehaviour
         while (!b_Muerto && !b_finish)
         {
             timerTime += Time.deltaTime;
+            if(enemigoBonificacionTiempo)
+            {
+                quitarSegundos.SetActive(true);
+                timerTime -= 2f;
+                enemigoBonificacionTiempo = false;
+            }
             minutes = (int)(timerTime / 60f);
             seconds = (int)(timerTime - minutes * 60f);
             cents = (int)((timerTime - (int)timerTime) * 100f);
