@@ -19,6 +19,7 @@ public class PrincipioController : MonoBehaviour
     {
         Debug.Log("empieza");
         playerInput.SwitchCurrentActionMap("InputsPlayer");
+        Camera.main.GetComponent<AudioSource>().mute = false;
         StartCoroutine(playerController.Contador());
     }
 }

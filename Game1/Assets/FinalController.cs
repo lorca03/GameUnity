@@ -11,6 +11,7 @@ public class FinalController : MonoBehaviour
         if (other.tag == "Player")
         {
             player.ActivarFinish();
+            Camera.main.GetComponent<AudioSource>().mute = true;
         }
     }
 }

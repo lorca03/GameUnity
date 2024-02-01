@@ -125,16 +125,24 @@ public class PlayerController : MonoBehaviour
 
     private void LanzarBoomerang(InputAction.CallbackContext obj)
     {
-        b_teleport = false;
-        animator.SetBool("isAttacking", true);
+        if (animator != null)
+        {
+            animator.SetBool("isAttacking", false);
+            b_teleport = false;
+            animator.SetBool("isAttacking", true);
+        }
     }
     private void IrBoomerang(InputAction.CallbackContext obj)
     {
-        if (GetComponentInParent<PremiosController>().habilidadesPersonaje.Contains("IrBoomerang"))
+        if (animator != null)
         {
-            b_teleport = true;
-            animator.SetBool("isAttacking", true);
+            if (GetComponentInParent<PremiosController>().habilidadesPersonaje.Contains("IrBoomerang"))
+            {
+                b_teleport = true;
+                animator.SetBool("isAttacking", true);
+            }
         }
+        
     }
 
 }

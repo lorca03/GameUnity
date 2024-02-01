@@ -79,10 +79,14 @@ public class MovimientoPlayer : MonoBehaviour
 
     private void Chc_Jump(InputAction.CallbackContext obj)
     {
-        if (chc.isGrounded)
+        if (chc != null)
         {
-            animator.SetBool("isJumping", true);
-            v3_moveDirection.y = f_jump_speed;
+            if (chc.isGrounded)
+            {
+                animator.SetBool("isJumping", true);
+                v3_moveDirection.y = f_jump_speed;
+            }
         }
+        
     }
 }
