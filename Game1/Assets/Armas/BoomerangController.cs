@@ -97,7 +97,7 @@ public class BoomerangController : MonoBehaviour
         {
             other.GetComponent<EnemyController>().RestarVida(i_daño);
         }else if (other.tag == "Force" && b_clone)
-        {
+        {Debug.Log("Force");
             b_teleport = false;
             b_go = false;
         }
