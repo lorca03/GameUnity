@@ -103,7 +103,7 @@ public class FirebaseManager : MonoBehaviour
         return Regex.Replace(jsontext, "[{}\"]", "");
     }
 
-    IEnumerator MostrarRanking()
+    public IEnumerator MostrarRanking()
     {
         string cleanedJson = "";
         yield return ObtenerRanking(result => cleanedJson = result);

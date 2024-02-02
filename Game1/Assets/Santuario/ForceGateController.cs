@@ -7,6 +7,7 @@ public class ForceGateController : MonoBehaviour
 {
     public GameObject textoLlave;
     public PremiosController premiosController;
+    public PlayerController playerController;
     private Animator animator;
 
     private void Start()
@@ -28,6 +29,12 @@ public class ForceGateController : MonoBehaviour
                 textoLlave.SetActive(true);
             }
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+            playerController.animator.SetBool("isAttacking", false);
     }
 
     private void OnTriggerExit(Collider other)

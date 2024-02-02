@@ -68,8 +68,6 @@ public class MovimientoPlayer : MonoBehaviour
             chc.Move(v3_moveDirection * Time.deltaTime);
             transform.position =  new Vector3(transform.position.x,transform.position.y, profundidad);
         }
-            
-
     }
 
     private Vector2 Input()

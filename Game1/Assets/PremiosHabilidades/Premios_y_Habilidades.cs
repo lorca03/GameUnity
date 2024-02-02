@@ -14,12 +14,6 @@ public class PremiosController : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void AñadirHabilidad(string habilidad)
     {
         habilidadesPersonaje.Add(habilidad);
