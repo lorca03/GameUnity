@@ -16,6 +16,7 @@ public class FirebaseManager : MonoBehaviour
     public TextMeshProUGUI puntuacion;
     public TMP_InputField inputField;
     public GameObject enviar;
+    public TextMeshProUGUI error;
 
     void Start()
     {
@@ -26,8 +27,35 @@ public class FirebaseManager : MonoBehaviour
 
     public void AgregarPuntajeAlRanking()
     {
-        string data = inputField.text+ ":"+ puntuacion.text;
+        string inputText = inputField.text;
+        if (inputText.Length < 3)
+        {
+            error.text = "Debes ingresar al menos tres caracteres";
+            StartCoroutine(LimpiarError());
+            return;
+        }
+        if (!Regex.IsMatch(inputText, "^[a-zA-Z0-9_ ]+$"))
+        {
+            error.text = "Solo se permiten letras, números, barra baja (_) y espacios";
+            StartCoroutine(LimpiarError());
+            return;
+        }
+
+        int letrasCount = inputText.Count(char.IsLetter);
+        if (letrasCount < 3)
+        {
+            error.text = "Debes ingresar al menos tres letras";
+            StartCoroutine(LimpiarError());
+            return;
+        }
+        string data = inputText + ":"+ puntuacion.text;
         StartCoroutine(EnviarPuntaje(baseUrl, data));
+    }
+
+    IEnumerator LimpiarError()
+    {
+        yield return new WaitForSeconds(3);
+        error.text = "";
     }
 
     IEnumerator EnviarPuntaje(string url, string data)
@@ -52,9 +80,9 @@ public class FirebaseManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(data);
                 Debug.Log("Puntaje enviado correctamente");
                 StartCoroutine(MostrarRanking());
+                enviar.SetActive(false);
             }
         }
     }

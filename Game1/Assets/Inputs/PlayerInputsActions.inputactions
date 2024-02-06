@@ -163,6 +163,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "2D Vector",
+                    "id": "7d454c81-009d-48ca-8943-69edea34aca1",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "cfed6f52-d784-4c4f-aa6b-fc182b78aab5",
+                    "path": "<Joystick>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "ed9b66e7-85b0-4f2f-a2b0-d0b354ddef00",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "687fa81a-4aa4-4739-a23e-abd3eea21077",
+                    "path": "<Joystick>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9eea8fbd-ee36-43f2-99f8-903cc1a520c9",
+                    "path": "<Joystick>/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "a2f615f9-f733-4039-9c76-774f4d3e1452",
                     "path": "<Keyboard>/w",
@@ -186,6 +241,17 @@
                 },
                 {
                     "name": "",
+                    "id": "57624caa-1c58-4f54-9c5b-3ae2bc41dac4",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e76c2b3b-5313-4365-8497-3eab7e38e95a",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
@@ -199,6 +265,17 @@
                     "name": "",
                     "id": "aa5fe457-f964-4d53-bcf6-8fe6128f0233",
                     "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e1b0425-0551-4e3f-8c15-7fe723d176ad",
+                    "path": "<Joystick>/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -241,6 +318,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2a1a7077-dcfb-4448-8fa0-e0cdf797b5f4",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pausa",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "20ee651e-342c-4c4c-a2bf-cb169aa923b5",
                     "path": "<Mouse>/middleButton",
                     "interactions": "",
@@ -254,6 +342,17 @@
                     "name": "",
                     "id": "23295d12-9e56-4516-a4cf-e70b5a7d8c2f",
                     "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IrBoomerang",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "432fbbd2-0a71-47fa-a29b-d597da6ab07b",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

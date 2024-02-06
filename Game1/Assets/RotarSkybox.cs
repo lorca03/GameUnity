@@ -8,6 +8,6 @@ public class RotarSkybox : MonoBehaviour
 
     void Update()
     {
-        RenderSettings.skybox.SetFloat("_Rotation", Time.time * velocidadRotacion);
+       // RenderSettings.skybox.SetFloat("_Rotation", Time.time * velocidadRotacion);
     }
 }
