@@ -218,6 +218,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "2D Vector",
+                    "id": "b4e16622-996a-4785-8d32-43107f6142e4",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f61776cf-a262-4e9f-9f82-904cc509332d",
+                    "path": "<Joystick>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "36277da9-b406-4ab7-a0a5-dcccde387dc2",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "5c44463d-bdf7-44a3-a4ec-3ce161e5c6cd",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ec9913e0-7806-4585-a451-73fc9f245dc7",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "a2f615f9-f733-4039-9c76-774f4d3e1452",
                     "path": "<Keyboard>/w",
@@ -263,6 +318,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f42d113d-66b8-425d-9f2d-902528004910",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "aa5fe457-f964-4d53-bcf6-8fe6128f0233",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -287,6 +353,17 @@
                     "name": "",
                     "id": "035f65d5-db8d-4854-ae46-fbaf72528ee5",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disparar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8990e4ea-1d9a-45b8-ba52-5fa65b69cefa",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -329,6 +406,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e25227d0-812f-4049-ab5c-292f2fd2edaa",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pausa",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "20ee651e-342c-4c4c-a2bf-cb169aa923b5",
                     "path": "<Mouse>/middleButton",
                     "interactions": "",
@@ -353,6 +441,17 @@
                     "name": "",
                     "id": "432fbbd2-0a71-47fa-a29b-d597da6ab07b",
                     "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IrBoomerang",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "883128fd-08d1-4499-9208-7de923e612ba",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
