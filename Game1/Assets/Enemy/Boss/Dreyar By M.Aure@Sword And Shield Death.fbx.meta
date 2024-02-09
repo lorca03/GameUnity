@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 47f9820808f4f9844b762fbcc70dba7d
+guid: 5fedf9812b076f24a86ba68179a77b19
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: dreyar_M3
-    second: {fileID: 2100000, guid: 89887ed2da3ea3b4ebb072c39ae54ae3, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Dreyar_diffuse
-    second: {fileID: 2800000, guid: d46ff07fd6e381c49ae91044753a206a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Dreyar_normal
-    second: {fileID: 2800000, guid: 807f16f1cc0359945ba5f1167a89b334, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Dreyar_specular
-    second: {fileID: 2800000, guid: 1f5c6b3eabc0fd143a6e8d4417e486a5, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -55,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.8
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -97,12 +77,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 5918f25ae09784448bd8d6ddd48ea389
-  - 80a026e8370442044b939de46240b340
-  - 6dcfa36b970bfd348a5d75ad51ccc277
-  - 5fedf9812b076f24a86ba68179a77b19
-  - 757a0f967bf0c4242b9525c9571de326
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -115,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.8
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
