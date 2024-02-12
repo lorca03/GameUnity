@@ -15,15 +15,25 @@ public class BoomerangController : MonoBehaviour
     Vector3 v3_locationInFrontOfPlayer;
     Animator animator;
     GameObject camera;
+    public int i_numeroJugador = 1;
 
     void Start()
     {
         camera = FindObjectOfType<CameraController>().gameObject;
         b_go = false;
         i_daño = 25;
-        player = GameObject.Find("Chc_Personaje");
-        boomerang = GameObject.Find("boomerang");
-        animator = GameObject.Find("Ch44_nonPBR").GetComponent<Animator>();
+        if (i_numeroJugador == 1)
+        {
+            player = GameObject.Find("Chc_Personaje");
+            boomerang = GameObject.Find("boomerang");
+        }
+        else if (i_numeroJugador == 2)
+        {
+            player = GameObject.Find("Chc_Personaje2");
+            boomerang = GameObject.Find("boomerang2");
+        }
+
+        animator = player.transform.Find("Ch44_nonPBR").GetComponent<Animator>();
 
         Vector3 direccion = player.transform.root.localScale.x == 1 ? Vector3.right : Vector3.left;
 
@@ -97,10 +107,15 @@ public class BoomerangController : MonoBehaviour
         {
             other.GetComponent<EnemyController>().RestarVida(i_daño);
         }else if (other.tag == "Force" && b_clone)
-        {Debug.Log("Force");
+        {
             b_teleport = false;
             b_go = false;
         }
+        else if (other.tag == "Player" && b_clone)
+        {
+            other.GetComponent<PlayerController>().Restar_Vida(20);
+        }
+
 
     }
 }

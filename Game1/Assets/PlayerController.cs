@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public bool b_empezarJuego = false;
     public bool enemigoBonificacionTiempo = false;
     public GameObject quitarSegundos;
+    public VidasMulti vidasMulti;
+    string sceneName;
 
     // Start is called before the first frame update
     void Start()
@@ -41,14 +43,19 @@ public class PlayerController : MonoBehaviour
         movPlayer = GetComponent<MovimientoPlayer>();
         inputPlayer.actions["Disparar"].performed += LanzarBoomerang;
         inputPlayer.actions["IrBoomerang"].performed += IrBoomerang;
+        sceneName = SceneManager.GetActiveScene().name;
     }
 
     void Update()
     {
-        if (b_Muerto) return;  
+        if (b_Muerto) return;
 
-        Muerte();
+        if (sceneName.Equals("SampleScene"))
+            Muerte();
+        else
+            vidasMulti.MuerteMulti(i_vida, gameObject);
     }
+
 
     public IEnumerator Contador()
     {
@@ -58,7 +65,7 @@ public class PlayerController : MonoBehaviour
             if(enemigoBonificacionTiempo)
             {
                 quitarSegundos.SetActive(true);
-                timerTime -= 2f;
+                timerTime -= 5f;
                 enemigoBonificacionTiempo = false;
             }
             minutes = (int)(timerTime / 60f);
@@ -95,12 +102,14 @@ public class PlayerController : MonoBehaviour
         menumuerto.SetActive(true);
     }
 
+
     public void CloneBoobmerag()
     {
         GameObject clone;
         Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 1f);
         clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
         clone.GetComponent<BoomerangController>().b_clone = true;
+        clone.GetComponent<BoomerangController>().i_numeroJugador = gameObject.name == "Chc_Personaje" ? 1 : 2;
         if (b_teleport)
             clone.GetComponent<BoomerangController>().b_teleport = true;
         b_lanzar = false;
@@ -141,8 +150,7 @@ public class PlayerController : MonoBehaviour
                 b_teleport = true;
                 animator.SetBool("isAttacking", true);
             }
-        }
-        
+        }        
     }
 
 }
