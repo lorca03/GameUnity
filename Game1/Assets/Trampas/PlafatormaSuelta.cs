@@ -31,7 +31,7 @@ public class PlafatormaSuelta : MonoBehaviour
     private IEnumerator Caida()
     {
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-        yield return new WaitForSeconds(esperarParaCaer);
+        //yield return new WaitForSeconds(esperarParaCaer);
         rb.useGravity = enabled;
         yield return new WaitForSeconds(esperarParaDestruir);
         gameObject.SetActive(false);

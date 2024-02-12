@@ -7,12 +7,13 @@ public class BossController : MonoBehaviour
     GameObject player;
     public bool b_inRange = false;
 
-    private float cooldownAtaque1 = 3f; 
-    private float cooldownAtaque2 = 4f;
+    private float cooldownAtaque1 = 4f; 
+    private float cooldownAtaque2 = 5f;
     private float cooldownAtaque3 = 6f;
 
     private float tiempoUltimoAtaque = 0f;
     private int tipoUltimoAtaque = 0;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,8 @@ public class BossController : MonoBehaviour
     {
         if (b_inRange)
         {
-            // Mira hacia el jugador
-            Vector3 direction = player.transform.position - transform.position;
-            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, Time.deltaTime * 5f); // Puedes ajustar la velocidad de rotación
+            float xScale = Mathf.Abs(transform.localScale.x);
+            transform.localScale = new Vector3(transform.position.x < player.transform.position.x ? -xScale : xScale, transform.localScale.y, transform.localScale.z);
 
             // Genera un número aleatorio para determinar el ataque
             if (Time.time - tiempoUltimoAtaque > ObtenerCooldown())
@@ -77,19 +76,19 @@ public class BossController : MonoBehaviour
 
     void Ataque1()
     {
-        // Lógica del primer ataque
+        animator.SetTrigger("Atacar");
         Debug.Log("Ataque 1");
     }
 
     void Ataque2()
     {
-        // Lógica del segundo ataque
+        animator.SetTrigger("Atacar2");
         Debug.Log("Ataque 2");
     }
 
     void Ataque3()
     {
-        // Lógica del tercer ataque
+        animator.SetTrigger("AtacarCombo");
         Debug.Log("Ataque 3");
     }
 
@@ -97,7 +96,14 @@ public class BossController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            b_inRange = true;
+            b_inRange = true;            
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            b_inRange = false;
         }
     }
 }

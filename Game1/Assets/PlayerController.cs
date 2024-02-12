@@ -50,10 +50,10 @@ public class PlayerController : MonoBehaviour
     {
         if (b_Muerto) return;
 
-        if (sceneName.Equals("SampleScene"))
-            Muerte();
-        else
-            vidasMulti.MuerteMulti(i_vida, gameObject);
+        //if (sceneName.Equals("SampleScene"))
+        Muerte();
+        //else
+        //    vidasMulti.MuerteMulti(i_vida, gameObject);
     }
 
 

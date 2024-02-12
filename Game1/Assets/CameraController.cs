@@ -27,9 +27,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        v3_Posicion = new Vector3(Player.transform.position.x + f_xAjustePosicion, Player.transform.position.y + f_yAjustePosicion, f_Zoom);
-
-        transform.position = Vector3.Lerp(transform.position, v3_Posicion, f_Velocidad * Time.deltaTime);
+        CambiarPosicion(f_Zoom, f_xAjustePosicion,f_yAjustePosicion);
         if (playercControl.GetComponent<PlayerController>().b_Muerto)
         {
             audioSource.Stop();
@@ -44,6 +42,13 @@ public class CameraController : MonoBehaviour
             Destroy(tempAudioSource, boomerangAudio.length);
             b_boomerangSonido = false;
         }
+    }
+
+    public void CambiarPosicion(float zoom,float xAjustePosicion,float yAjustePosicion)
+    {
+        v3_Posicion = new Vector3(Player.transform.position.x + xAjustePosicion, Player.transform.position.y + yAjustePosicion, zoom);
+
+        transform.position = Vector3.Lerp(transform.position, v3_Posicion, f_Velocidad * Time.deltaTime);
     }
 
 

@@ -111,10 +111,10 @@ public class BoomerangController : MonoBehaviour
             b_teleport = false;
             b_go = false;
         }
-        else if (other.tag == "Player" && b_clone)
-        {
-            other.GetComponent<PlayerController>().Restar_Vida(20);
-        }
+        //else if (other.tag == "Player" && b_clone)
+        //{
+        //    other.GetComponent<PlayerController>().Restar_Vida(20);
+        //}
 
 
     }
