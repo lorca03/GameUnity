@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SalaController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class SalaController : MonoBehaviour
             atrapado = true;
             if (gameObject.name == "SalaBoss")
             {
+                GameObject.Find("FondoBarraVidaBoss").GetComponent<Image>().enabled = true;
+                GameObject.Find("BarraVidaBoss").GetComponent<Image>().enabled = true;
                 Camera.main.GetComponent<CameraController>().f_Velocidad = 10;
                 Camera.main.GetComponent<CameraController>().f_Zoom = 15;
                 Camera.main.GetComponent<CameraController>().f_yAjustePosicion = 8;

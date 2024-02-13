@@ -1,24 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
     GameObject player;
+    Rigidbody rb;
     public bool b_inRange = false;
 
-    private float cooldownAtaque1 = 4f; 
+    private float cooldownAtaque1 = 4f;
     private float cooldownAtaque2 = 5f;
     private float cooldownAtaque3 = 6f;
+
+    public int i_vida = 0;
+    public int i_vidaMaxima = 100;
+    public Image barraVidaEnemy;
+    public bool b_isDead = false;
 
     private float tiempoUltimoAtaque = 0f;
     private int tipoUltimoAtaque = 0;
     public Animator animator;
+    public float dashTime;
+    bool atacando = false;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<MovimientoPlayer>().gameObject;
+        // chc = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        i_vida = i_vidaMaxima;
     }
 
     // Update is called once per frame
@@ -26,41 +38,77 @@ public class BossController : MonoBehaviour
     {
         if (b_inRange)
         {
-            float xScale = Mathf.Abs(transform.localScale.x);
-            transform.localScale = new Vector3(transform.position.x < player.transform.position.x ? -xScale : xScale, transform.localScale.y, transform.localScale.z);
+            if (!atacando)
+            {
+                float xScale = Mathf.Abs(transform.localScale.x);
+                transform.localScale = new Vector3(transform.position.x < player.transform.position.x ? -xScale : xScale, transform.localScale.y, transform.localScale.z);
+            }
 
             // Genera un número aleatorio para determinar el ataque
             if (Time.time - tiempoUltimoAtaque > ObtenerCooldown())
             {
                 // Genera un número aleatorio para determinar el ataque
                 float randomAttack = Random.Range(0f, 100f);
-
-                // Determina cuál ataque ejecutar en base al número aleatorio
-                if (randomAttack <= 45f)
+                atacando = true;
+                if (randomAttack <= 15f)
                 {
-                    Ataque1();
-                    tipoUltimoAtaque = 1;
+                    StartCoroutine(Dash());
+                    tipoUltimoAtaque = 4;  // Tipo de último ataque nuevo
                 }
-                else if (randomAttack <= 85f)
+                else if (randomAttack <= 60f)
                 {
-                    Ataque2();
-                    tipoUltimoAtaque = 2;
+                    if (randomAttack <= 45f)
+                    {
+                        Ataque1();
+                        tipoUltimoAtaque = 1;
+                    }
+                    else
+                    {
+                        Ataque2();
+                        tipoUltimoAtaque = 2;
+                    }
                 }
                 else
                 {
                     Ataque3();
                     tipoUltimoAtaque = 3;
                 }
-
-                // Actualiza el tiempo del último ataque y el tipo de último ataque
                 tiempoUltimoAtaque = Time.time;
             }
+
         }
+    }
+
+    public void RestarVida(int i_daño)
+    {
+        if (i_vida - i_daño <= 0)
+        {
+            animator.SetTrigger("Dead");
+            b_isDead = true;
+            Destroy(transform.gameObject, 1f);
+        }
+        i_vida -= i_daño;
+        barraVidaEnemy.fillAmount = (float)i_vida / i_vidaMaxima;
+    }
+
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
+
+        animator.SetBool("Dash", true);
+        Vector3 dashDirection = new Vector3(((player.transform.position - transform.position).normalized).x, 0f, 0f);
+
+        while (Time.time < startTime + dashTime)
+        {
+            rb.MovePosition(transform.position + dashDirection * 30 * Time.deltaTime);
+            yield return null;
+        }
+        animator.SetBool("Dash", false);
+        atacando = false;
     }
 
     float ObtenerCooldown()
     {
-        // Devuelve el cooldown correspondiente al tipo de ataque
         switch (tipoUltimoAtaque)
         {
             case 1:
@@ -69,6 +117,8 @@ public class BossController : MonoBehaviour
                 return cooldownAtaque2;
             case 3:
                 return cooldownAtaque3;
+            case 4:
+                return 5f;
             default:
                 return 0f;
         }
@@ -92,11 +142,16 @@ public class BossController : MonoBehaviour
         Debug.Log("Ataque 3");
     }
 
+    public void FinAtaque()
+    {
+        atacando = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            b_inRange = true;            
+            b_inRange = true;
         }
     }
     private void OnTriggerExit(Collider other)
