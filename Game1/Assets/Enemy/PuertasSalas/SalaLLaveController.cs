@@ -11,6 +11,8 @@ public class SalaLLaveController : MonoBehaviour
     private bool accionRealizada = false;
     private bool textoUnavez = false;
     private Vector3 ultimaPosicionEnemy;
+    public GameObject textoLlaveConse;
+
 
     private void Start()
     {
@@ -77,5 +79,13 @@ public class SalaLLaveController : MonoBehaviour
     {
         Debug.Log("¡Llave liberada!");
         Instantiate(llavePrefab, new Vector3(positionLlave.x - 1.5f, positionLlave.y, positionLlave.z), Quaternion.identity);
+        textoLlaveConse.SetActive(true);
+        StartCoroutine(QuitarTextoConse());
+    }
+
+    IEnumerator QuitarTextoConse()
+    {
+        yield return new WaitForSeconds(2f);
+        textoLlaveConse.SetActive(false);
     }
 }

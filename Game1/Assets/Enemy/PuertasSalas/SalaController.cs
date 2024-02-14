@@ -31,8 +31,14 @@ public class SalaController : MonoBehaviour
     {
         animator1.SetBool("atrapar", false);
         animator2.SetBool("atrapar", false);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
         if (gameObject.name == "SalaBoss")
         {
+            GameObject.Find("FondoBarraVidaBoss").GetComponent<Image>().enabled = false;
+            GameObject.Find("BarraVidaBoss").GetComponent<Image>().enabled = false;
             Camera.main.GetComponent<CameraController>().f_Velocidad = 20;
             Camera.main.GetComponent<CameraController>().f_Zoom = 20;
             Camera.main.GetComponent<CameraController>().f_yAjustePosicion = 6;

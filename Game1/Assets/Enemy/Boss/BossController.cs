@@ -9,9 +9,9 @@ public class BossController : MonoBehaviour
     Rigidbody rb;
     public bool b_inRange = false;
 
-    private float cooldownAtaque1 = 4f;
-    private float cooldownAtaque2 = 5f;
-    private float cooldownAtaque3 = 6f;
+    private float cooldownAtaque1 = 3f;
+    private float cooldownAtaque2 = 4f;
+    private float cooldownAtaque3 = 5f;
 
     public int i_vida = 0;
     public int i_vidaMaxima = 100;
@@ -22,13 +22,12 @@ public class BossController : MonoBehaviour
     private int tipoUltimoAtaque = 0;
     public Animator animator;
     public float dashTime;
-    bool atacando = false;
+    [SerializeField] bool atacando = false;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<MovimientoPlayer>().gameObject;
-        // chc = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         i_vida = i_vidaMaxima;
     }
@@ -50,10 +49,10 @@ public class BossController : MonoBehaviour
                 // Genera un número aleatorio para determinar el ataque
                 float randomAttack = Random.Range(0f, 100f);
                 atacando = true;
-                if (randomAttack <= 15f)
+                if (randomAttack <= 20f)
                 {
                     StartCoroutine(Dash());
-                    tipoUltimoAtaque = 4;  // Tipo de último ataque nuevo
+                    tipoUltimoAtaque = 4; 
                 }
                 else if (randomAttack <= 60f)
                 {
@@ -91,6 +90,18 @@ public class BossController : MonoBehaviour
         barraVidaEnemy.fillAmount = (float)i_vida / i_vidaMaxima;
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            GetComponentInParent<SalaController>().Liberar();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(ex.Message);
+        }
+    }
+
     IEnumerator Dash()
     {
         float startTime = Time.time;
@@ -118,7 +129,7 @@ public class BossController : MonoBehaviour
             case 3:
                 return cooldownAtaque3;
             case 4:
-                return 5f;
+                return 2f;
             default:
                 return 0f;
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LlaveController : MonoBehaviour
@@ -16,9 +17,8 @@ public class LlaveController : MonoBehaviour
         if (other.tag == "Player")
         {
             premiosController.AñadirHabilidad("Llave");
+            
             Destroy(gameObject);
         }
     }
-
-
 }

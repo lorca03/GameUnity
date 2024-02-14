@@ -113,7 +113,7 @@ public class BoomerangController : MonoBehaviour
         }
         else if (other.tag == "Boss" && b_clone)
         {
-            other.GetComponent<BossController>().RestarVida(i_daño);
+            other.GetComponentInParent<BossController>().RestarVida(i_daño);
         }
         //else if (other.tag == "Player" && b_clone)
         //{
