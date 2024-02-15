@@ -13,15 +13,13 @@ public class PrincipioMultiplayer : MonoBehaviour
     void Start()
     {
         playerInput = player1.GetComponent<PlayerInput>();
-        playerInput.SwitchCurrentActionMap("NoMove");
         playerInput2 = player2.GetComponent<PlayerInput>();
-        playerInput2.SwitchCurrentActionMap("NoMove");
     }
 
     public void EmpezarJuego()
     {
-        playerInput.SwitchCurrentActionMap("InputsPlayer");
         playerInput2.SwitchCurrentActionMap("InputsPlayer1");
+        playerInput.SwitchCurrentActionMap("InputsPlayer");
         //Camera.main.GetComponent<AudioSource>().mute = false;
     }
 }

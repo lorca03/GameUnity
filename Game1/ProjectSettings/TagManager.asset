@@ -11,6 +11,7 @@ TagManager:
   - Botones
   - Force
   - Boss
+  - Player2
   layers:
   - Default
   - TransparentFX

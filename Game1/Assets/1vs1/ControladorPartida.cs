@@ -19,7 +19,9 @@ public class ControladorPartida : MonoBehaviour
             {
                 Debug.Log("Gana el jugador 2");
             }
-            jugador1.GetComponent<PlayerController>().i_vida = 100;
+            ReiniciarPosiciones();
+            jugador1.GetComponent<PlayerController_2>().i_vida = 100;
+            jugador1.GetComponent<PlayerController_2>().Actualizar_Barra();
         } 
     }
     public int Muertes2 
@@ -32,30 +34,16 @@ public class ControladorPartida : MonoBehaviour
             {
                 Debug.Log("Gana el jugador 1");
             }
-            //ReiniciarPosiciones();
-            jugador2.GetComponent<PlayerController>().i_vida = 100;
+            ReiniciarPosiciones();
+            jugador2.GetComponent<PlayerController_2>().i_vida = 100;
+            jugador2.GetComponent<PlayerController_2>().Actualizar_Barra();
         }
     }
 
     void ReiniciarPosiciones()
     {
         Debug.Log("Reiniciando posiciones");
-        jugador1.transform.position = Vector3.MoveTowards(jugador1.transform.position, new Vector3(-31, 14f, 45.2f), Time.deltaTime * 30);
-        //jugadores[0].transform.position = new Vector3(-31, 14f, 45.2f); Debug.Log(jugadores[0].transform.position);
-        //jugadores[1].transform.position = new Vector3(-1.68f, 14f, 45.2f);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
+        jugador1.transform.position = new Vector3(-31, 14f, 45.2f);
+        jugador2.transform.position = new Vector3(-1.68f, 14f, 45.2f);
+    }    
 }

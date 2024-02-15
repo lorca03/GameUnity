@@ -23,7 +23,6 @@ public class VidasMulti : MonoBehaviour
     {
         if (i_vida <= 0)
         {
-            player.GetComponent< PlayerInput>().SwitchCurrentActionMap("NoMove");
             if (player.name == "Chc_Personaje")
             {
                 contrPartida.Muertes1++;

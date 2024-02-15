@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
-public class BoomerangController : MonoBehaviour
+public class BoomerangController_2 : MonoBehaviour
 {
     public bool b_clone = false;
     public bool b_teleport = false;
@@ -15,14 +13,24 @@ public class BoomerangController : MonoBehaviour
     Vector3 v3_locationInFrontOfPlayer;
     Animator animator;
     GameObject camera;
+    public int i_numeroJugador = 1;
 
     void Start()
     {
-        camera = FindObjectOfType<CameraController>().gameObject;
+        camera = FindObjectOfType<CameraController_2>().gameObject;
         b_go = false;
-        i_daño = 25;
-        player = GameObject.Find("Chc_Personaje");
-        boomerang = GameObject.Find("boomerang");
+        i_daño = 10;
+        if (i_numeroJugador == 1)
+        {
+            player = GameObject.Find("Chc_Personaje");
+            boomerang = GameObject.Find("boomerang");
+        }
+        else if (i_numeroJugador == 2)
+        {
+            player = GameObject.Find("Chc_Personaje2");
+            boomerang = GameObject.Find("boomerang2");
+        }
+
         animator = player.transform.Find("Ch44_nonPBR").GetComponent<Animator>();
 
         Vector3 direccion = player.transform.root.localScale.x == 1 ? Vector3.right : Vector3.left;
@@ -42,7 +50,7 @@ public class BoomerangController : MonoBehaviour
 
     IEnumerator Boom()
     {
-        camera.GetComponent<CameraController>().b_boomerangSonido = true;
+        camera.GetComponent<CameraController_2>().b_boomerangSonido = true;
         b_go = true;
         yield return new WaitForSeconds(.6f);
         if (b_teleport)
@@ -53,14 +61,14 @@ public class BoomerangController : MonoBehaviour
 
     IEnumerator MoverHaciaBoomerang()
     {
-        player.GetComponent<MovimientoPlayer>().f_gravity = 0;
-        player.GetComponent<MovimientoPlayer>().v3_moveDirection.y = 0;
+        player.GetComponent<MovimientoPlayer_2>().f_gravity = 0;
+        player.GetComponent<MovimientoPlayer_2>().v3_moveDirection.y = 0;
         while (Mathf.FloorToInt(player.transform.position.x) != Mathf.FloorToInt(transform.position.x) && Mathf.FloorToInt(player.transform.position.y) != Mathf.FloorToInt(transform.position.y))
         {
             player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 30);
             yield return null;
         }
-        player.GetComponent<MovimientoPlayer>().f_gravity = 35;
+        player.GetComponent<MovimientoPlayer_2>().f_gravity = 35;
         b_go = false;
     }
 
@@ -92,19 +100,14 @@ public class BoomerangController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.tag == "Enemy" && b_clone)
+       
+        if (other.tag == "Player" && b_clone && i_numeroJugador==2)
         {
-            other.GetComponent<EnemyController>().RestarVida(i_daño);
+            other.GetComponent<PlayerController_2>().Restar_Vida(i_daño);
         }
-        else if (other.tag == "Force" && b_clone)
+        if (other.tag == "Player2" && b_clone && i_numeroJugador == 1)
         {
-            b_teleport = false;
-            b_go = false;
-        }
-        else if (other.tag == "Boss" && b_clone)
-        {
-            other.GetComponentInParent<BossController>().RestarVida(i_daño);
+            other.GetComponent<PlayerController_2>().Restar_Vida(i_daño);
         }
         //else if (other.tag == "Player" && b_clone)
         //{
