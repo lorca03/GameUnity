@@ -16,11 +16,16 @@ public class MovimientoPlayer : MonoBehaviour
     public float f_jump_speed;
     public float f_gravity;
 
+    float tiempoEnAire;
+
     float f_horizontalInput;
     float profundidad;
 
-    [HideInInspector] public Vector3 v3_moveDirection = Vector3.zero;
+    /*[HideInInspector]*/ public Vector3 v3_moveDirection = Vector3.zero;
     Vector3 v3_posicio_inicial = Vector3.zero;
+
+    [SerializeField] LayerMask lm_suelo;
+
     void Start()
     {
         v3_posicio_inicial = transform.position;
@@ -40,6 +45,15 @@ public class MovimientoPlayer : MonoBehaviour
 
         f_horizontalInput = Input().x;
         v3_moveDirection.x = f_horizontalInput * f_speed;
+
+        if (chc.isGrounded)
+        {
+            tiempoEnAire = 0;
+        }
+        else 
+        {             
+            tiempoEnAire += Time.deltaTime;               
+        }
 
         if (f_horizontalInput != 0)
         {
@@ -85,6 +99,13 @@ public class MovimientoPlayer : MonoBehaviour
             {
                 animator.SetBool("isJumping", true);
                 v3_moveDirection.y = f_jump_speed;
+            }
+            else
+            {
+                if (tiempoEnAire < 0.1f && v3_moveDirection.y < 0)
+                {
+                    v3_moveDirection.y = f_jump_speed;
+                }
             }
         }
         
