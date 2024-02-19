@@ -84,7 +84,8 @@ public class BossController : MonoBehaviour
         {
             animator.SetTrigger("Dead");
             b_isDead = true;
-            Destroy(transform.gameObject, 1f);
+            Destroy(transform.gameObject, 1.5f);
+            Destroy(barraVidaEnemy);
         }
         i_vida -= i_daño;
         barraVidaEnemy.fillAmount = (float)i_vida / i_vidaMaxima;
@@ -165,6 +166,15 @@ public class BossController : MonoBehaviour
             b_inRange = true;
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            b_inRange = true;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")

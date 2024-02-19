@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     Animator animator;
 
     public ArmaEnemy ArmaEnemy;
-    public float f_Speed = 6;
+    public float f_Speed;
     public float f_DistanciaAtaque = 4;
     public float f_gravedad = 20f;
     public bool b_inRange = false;

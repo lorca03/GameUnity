@@ -15,6 +15,7 @@ public class BoomerangController : MonoBehaviour
     Vector3 v3_locationInFrontOfPlayer;
     Animator animator;
     GameObject camera;
+    float gravedad;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class BoomerangController : MonoBehaviour
         player = GameObject.Find("Chc_Personaje");
         boomerang = GameObject.Find("boomerang");
         animator = player.transform.Find("Ch44_nonPBR").GetComponent<Animator>();
+        gravedad = player.GetComponent<MovimientoPlayer>().f_gravity;
 
         Vector3 direccion = player.transform.root.localScale.x == 1 ? Vector3.right : Vector3.left;
 
@@ -60,7 +62,7 @@ public class BoomerangController : MonoBehaviour
             player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 30);
             yield return null;
         }
-        player.GetComponent<MovimientoPlayer>().f_gravity = 35;
+        player.GetComponent<MovimientoPlayer>().f_gravity = gravedad;
         b_go = false;
     }
 

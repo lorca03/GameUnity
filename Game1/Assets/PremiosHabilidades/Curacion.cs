@@ -21,7 +21,7 @@ public class Curacion : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PremiosController>().Curacion(20);
+            other.GetComponent<PremiosController>().Curacion(35);
             gameObject.SetActive(false);
         }
     }

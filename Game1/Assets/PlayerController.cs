@@ -102,13 +102,16 @@ public class PlayerController : MonoBehaviour
 
     public void CloneBoobmerag()
     {
-        GameObject clone;
-        Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 1f);
-        clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
-        clone.GetComponent<BoomerangController>().b_clone = true;
-        if (b_teleport)
-            clone.GetComponent<BoomerangController>().b_teleport = true;
-        b_lanzar = false;
+        if (!b_finish)
+        {
+            GameObject clone;
+            Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 1f);
+            clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
+            clone.GetComponent<BoomerangController>().b_clone = true;
+            if (b_teleport)
+                clone.GetComponent<BoomerangController>().b_teleport = true;
+            b_lanzar = false;
+        }
     }
 
     public void Restar_Vida(int i_daño)

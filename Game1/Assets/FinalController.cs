@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FinalController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class FinalController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.ActivarFinish();
+            player.ActivarFinish();            
             Camera.main.GetComponent<AudioSource>().mute = true;
         }
     }
