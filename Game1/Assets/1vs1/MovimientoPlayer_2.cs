@@ -60,7 +60,7 @@ public class MovimientoPlayer_2 : MonoBehaviour
 
         if (transform.position.y < -30)
         {
-            playerController.b_Muerto = true;
+            playerController.i_vida = 0;
         }
         else
         {

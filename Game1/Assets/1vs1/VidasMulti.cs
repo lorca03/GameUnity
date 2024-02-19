@@ -31,15 +31,6 @@ public class VidasMulti : MonoBehaviour
             {
                 contrPartida.Muertes2++;
             }
-            //animator.SetBool("Death", true);
-            //StartCoroutine(Animacion_Muerte());
         }
     }
-
-    //IEnumerator Animacion_Muerte()
-    //{
-    //    yield return new WaitForSeconds(5f);
-    //    animator.SetBool("Death", false);
-    //    menumuerto.SetActive(true);
-    //}
 }

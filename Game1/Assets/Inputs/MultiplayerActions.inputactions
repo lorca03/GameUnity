@@ -230,17 +230,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e8558a56-061c-4333-9c80-5817ad83ca05",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "031588ad-d7d1-4abb-b6e3-acebbe1cf00b",
                     "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4",
                     "interactions": "",

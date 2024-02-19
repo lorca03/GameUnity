@@ -68,7 +68,7 @@ public class BoomerangController_2 : MonoBehaviour
             player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, Time.deltaTime * 30);
             yield return null;
         }
-        player.GetComponent<MovimientoPlayer_2>().f_gravity = 35;
+        player.GetComponent<MovimientoPlayer_2>().f_gravity = 80;
         b_go = false;
     }
 
@@ -87,15 +87,20 @@ public class BoomerangController_2 : MonoBehaviour
 
             if (!b_go && Vector3.Distance(player.transform.position, transform.position) < 1.5)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    GameObject hijo = boomerang.transform.GetChild(i).gameObject;
-                    hijo.GetComponent<MeshRenderer>().enabled = true;
-                }
-                Destroy(this.gameObject);
+                AcabarBoomerang();
             }
             animator.SetBool("isAttacking", false);
         }
+    }
+
+    public void AcabarBoomerang()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject hijo = boomerang.transform.GetChild(i).gameObject;
+            hijo.GetComponent<MeshRenderer>().enabled = true;
+        }
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,10 +114,6 @@ public class BoomerangController_2 : MonoBehaviour
         {
             other.GetComponent<PlayerController_2>().Restar_Vida(i_daño);
         }
-        //else if (other.tag == "Player" && b_clone)
-        //{
-        //    other.GetComponent<PlayerController>().Restar_Vida(20);
-        //}
 
 
     }

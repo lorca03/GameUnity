@@ -14,34 +14,44 @@ public class ControladorPartida : MonoBehaviour
     public GameObject menuGanador;
     public TextMeshProUGUI textoGanador;
 
-    public int Muertes1 
-    { 
-        get => muertes1; 
-        set 
+    public int Muertes1
+    {
+        get => muertes1;
+        set
         {
-            muertes1++; 
-            if (muertes1 == 3)
+            try
             {
-                Debug.Log("Gana el jugador 2");
-                textoGanador.text = "2";
-                menuGanador.SetActive(true);
+                muertes1++;
+                if (muertes1 == 3)
+                {
+                    Debug.Log("Gana el jugador 2");
+                    textoGanador.text = "2";
+                    textoGanador.color = Color.red;
+                    menuGanador.SetActive(true);
+                }
+                texto2.text = muertes1.ToString();
+                ReiniciarPosiciones();
+                jugador1.GetComponent<PlayerController_2>().i_vida = 100;
+                jugador1.GetComponent<PlayerController_2>().Actualizar_Barra();
             }
-            texto2.text = muertes1.ToString();
-            ReiniciarPosiciones();
-            jugador1.GetComponent<PlayerController_2>().i_vida = 100;
-            jugador1.GetComponent<PlayerController_2>().Actualizar_Barra();
-        } 
+            catch (System.Exception)
+            {
+                System.Console.WriteLine("Error al reiniciar posiciones");
+                throw;
+            }
+        }
     }
-    public int Muertes2 
-    { 
+    public int Muertes2
+    {
         get => muertes2;
-        set 
-        { 
+        set
+        {
             muertes2++;
             if (muertes2 == 3)
             {
                 Debug.Log("Gana el jugador 1");
                 textoGanador.text = "1";
+                textoGanador.color = new Color(0, 247, 249);
                 menuGanador.SetActive(true);
             }
             texto1.text = muertes2.ToString();
@@ -53,18 +63,36 @@ public class ControladorPartida : MonoBehaviour
 
     void ReiniciarPosiciones()
     {
-        try
+        CharacterController controller1 = jugador1.GetComponent<CharacterController>();
+        if (controller1 != null)
         {
-            Debug.Log("Reiniciando posiciones");
+            controller1.enabled = false;
             jugador1.transform.position = new Vector3(-32.98f, 16f, 45.2f);
-            jugador2.transform.position = new Vector3(-2.98f, 16f, 45.2f);
-        }
-        catch (System.Exception)
-        {
-            System.Console.WriteLine("Error al reiniciar posiciones");
-            throw;
+            jugador1.GetComponent<MovimientoPlayer_2>().v3_moveDirection.y = 0;
+            controller1.enabled = true;
         }
 
-        
-    }    
+        CharacterController controller2 = jugador2.GetComponent<CharacterController>();
+        if (controller2 != null)
+        {
+            controller2.enabled = false;
+            jugador2.transform.position = new Vector3(-2.98f, 16f, 45.2f);
+            jugador2.GetComponent<MovimientoPlayer_2>().v3_moveDirection.y = 0;
+            controller2.enabled = true;
+        }
+        ReiniciarBoomerangs();
+    }
+
+    void ReiniciarBoomerangs()
+    {
+        GameObject[] clones = GameObject.FindGameObjectsWithTag("Boomerang");
+
+        foreach (GameObject clone in clones)
+        {
+            if (clone.name.Contains("(Clone)"))
+            {
+                clone.GetComponent<BoomerangController_2>().AcabarBoomerang();
+            }
+        }
+    }
 }
