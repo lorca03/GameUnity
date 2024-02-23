@@ -48,7 +48,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (b_Muerto) return;
+        if (b_Muerto) 
+        {
+            Cursor.lockState = CursorLockMode.None;
+            return ;
+        };
 
         Muerte();
     }

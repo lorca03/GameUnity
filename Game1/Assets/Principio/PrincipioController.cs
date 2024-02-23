@@ -15,12 +15,13 @@ public class PrincipioController : MonoBehaviour
         playerInput = player.GetComponent<PlayerInput>();
         playerController = player.GetComponent<PlayerController>();
         controlesAndroid.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void EmpezarJuego()
     {
         playerInput.SwitchCurrentActionMap("InputsPlayer");
-        Camera.main.GetComponent<AudioSource>().mute = false;
+        //Camera.main.GetComponent<AudioSource>().mute = false;
         StartCoroutine(playerController.Contador());
         if (Input.touchSupported)
         {

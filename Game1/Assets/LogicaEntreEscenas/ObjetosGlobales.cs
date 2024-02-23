@@ -13,12 +13,6 @@ public class ObjetosGlobales : MonoBehaviour
         objetoOpciones = objetosEscenas.transform.Find("Canvas").Find("BotonesOpciones").gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void MostrarOpciones(bool muestra)
     {
         objetoOpciones.SetActive(muestra);

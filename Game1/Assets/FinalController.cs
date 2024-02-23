@@ -13,6 +13,7 @@ public class FinalController : MonoBehaviour
         {
             player.ActivarFinish();            
             Camera.main.GetComponent<AudioSource>().mute = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
