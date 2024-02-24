@@ -55,7 +55,7 @@ public class MovimientoPlayer : MonoBehaviour
             tiempoEnAire += Time.deltaTime;               
         }
 
-        if (f_horizontalInput != 0)
+        if (f_horizontalInput != 0 && GameObject.Find("CanvasPausa").GetComponent<MenuController>().b_pausa == false)
         {
             animator.SetBool("isRunning", true);
             float xScale = Mathf.Abs(transform.localScale.x);

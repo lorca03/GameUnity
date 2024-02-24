@@ -46,7 +46,7 @@ public class PlayerController_2 : MonoBehaviour
     public void CloneBoobmerag()
     {
         GameObject clone;
-        Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 1f);
+        Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 0.2f);
         clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
         clone.GetComponent<BoomerangController_2>().b_clone = true;
         clone.GetComponent<BoomerangController_2>().i_numeroJugador = gameObject.name == "Chc_Personaje" ? 1 : 2;
