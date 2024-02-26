@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1957709637}
-  m_IndirectSpecularColor: {r: 0.44738978, g: 0.49397832, b: 0.59335166, a: 1}
+  m_IndirectSpecularColor: {r: 0.4471948, g: 0.49397165, b: 0.5931877, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 475825510}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Pausa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4923,7 +4923,6 @@ MonoBehaviour:
   i_vidaMaxima: 100
   i_vida: 0
   b_teleport: 0
-  boomerangController: {fileID: 5839158219030845973, guid: f0189a54839ccc6418a9e2d6f7f0a713, type: 3}
   BoomerangPrefab: {fileID: 1752662905326990773, guid: 3085bdc9b7aa7ed4dbc84bc3ec467b3c, type: 3}
   go_manoJugador: {fileID: 1885579560}
   animator: {fileID: 1068581293}
@@ -5080,7 +5079,6 @@ MonoBehaviour:
   i_vidaMaxima: 100
   i_vida: 0
   b_teleport: 0
-  boomerangController: {fileID: 5839158219030845973, guid: 4f8331bd0c1307c46ab78ed958ba91e0, type: 3}
   BoomerangPrefab: {fileID: 1752662905326990773, guid: 4f8331bd0c1307c46ab78ed958ba91e0, type: 3}
   go_manoJugador: {fileID: 1340999782}
   animator: {fileID: 5866666021215199832}

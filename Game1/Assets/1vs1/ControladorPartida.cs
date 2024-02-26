@@ -26,6 +26,7 @@ public class ControladorPartida : MonoBehaviour
                 {
                     Debug.Log("Gana el jugador 2");
                     textoGanador.text = "2";
+                    Cursor.lockState = CursorLockMode.None;
                     textoGanador.color = Color.red;
                     menuGanador.SetActive(true);
                 }
@@ -51,6 +52,7 @@ public class ControladorPartida : MonoBehaviour
             {
                 Debug.Log("Gana el jugador 1");
                 textoGanador.text = "1";
+                Cursor.lockState = CursorLockMode.None;
                 textoGanador.color = new Color(0, 247, 249);
                 menuGanador.SetActive(true);
             }
@@ -94,5 +96,10 @@ public class ControladorPartida : MonoBehaviour
                 clone.GetComponent<BoomerangController_2>().AcabarBoomerang();
             }
         }
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

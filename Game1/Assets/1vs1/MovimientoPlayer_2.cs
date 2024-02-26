@@ -38,8 +38,9 @@ public class MovimientoPlayer_2 : MonoBehaviour
 
         f_horizontalInput = Input().x;
         v3_moveDirection.x = f_horizontalInput * f_speed;
-        //Debug.Log(GameObject.Find("Canvas").GetComponent<MenuController1>().b_pausa);
-        if (f_horizontalInput != 0 && GameObject.Find("Canvas").GetComponent<MenuController1>().b_pausa == false)
+        Debug.Log(f_horizontalInput);
+
+        if (f_horizontalInput != 0 && GameObject.FindWithTag("Pausa").GetComponent<MenuController1>().b_pausa == false)
         {
             animator.SetBool("isRunning", true);
             float xScale = Mathf.Abs(transform.localScale.x);

@@ -12,6 +12,7 @@ TagManager:
   - Force
   - Boss
   - Player2
+  - Pausa
   layers:
   - Default
   - TransparentFX

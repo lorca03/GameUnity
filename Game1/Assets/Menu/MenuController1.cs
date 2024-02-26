@@ -22,6 +22,7 @@ public class MenuController1 : MonoBehaviour
         {
             MenuPausa.SetActive(true);
             b_pausa = true;
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         } else if(b_pausa)
             Reanudar();
@@ -33,6 +34,7 @@ public class MenuController1 : MonoBehaviour
         {
             MenuPausa.SetActive(false);
             b_pausa = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
         }
     }

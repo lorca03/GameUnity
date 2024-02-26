@@ -13,7 +13,6 @@ public class PlayerController_2 : MonoBehaviour
     public bool b_teleport = false;
 
     private PlayerInput inputPlayer;
-    public BoomerangController boomerangController;
     public GameObject BoomerangPrefab;
     public GameObject go_manoJugador;
     public Animator animator;

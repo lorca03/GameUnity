@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         if (!b_finish)
         {
             GameObject clone;
-            Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 0.2f);
+            Vector3 v3_posCreacion = new Vector3(go_manoJugador.transform.position.x, go_manoJugador.transform.position.y + .2f, go_manoJugador.transform.position.z - 0.1f);
             clone = Instantiate(BoomerangPrefab, v3_posCreacion, BoomerangPrefab.transform.rotation) as GameObject;
             clone.GetComponent<BoomerangController>().b_clone = true;
             if (b_teleport)

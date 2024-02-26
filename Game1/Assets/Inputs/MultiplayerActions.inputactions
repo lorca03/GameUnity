@@ -274,17 +274,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f26f2a6a-514f-4c6a-9f3f-b139f6bbdc94",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Disparar",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "380cc8fb-4702-44b8-a684-3052c1a4fc97",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -335,17 +324,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pausa",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "033f4bff-15c3-4ed7-a2f9-7415b1005d51",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "IrBoomerang",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

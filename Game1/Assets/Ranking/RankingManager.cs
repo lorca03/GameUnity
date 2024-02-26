@@ -16,6 +16,7 @@ public class RankingManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(MostrarRanking());
+        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator ObtenerRanking(Action<string> callback)
